@@ -32,6 +32,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96DFDB9529388F0C000F62CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		96DFDB9629388F32000F62CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		96DFDB9729388F3E000F62CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		96DFDB9829388F4C000F62CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		96DFDB9929388F5A000F62CB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		96F0C36A29388BA200B3597F = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +86,11 @@
 		96F0C37529388BA200B3597F /* Sophos App */ = {
 			isa = PBXGroup;
 			children = (
+				96DFDB9929388F5A000F62CB /* Extensions */,
+				96DFDB9829388F4C000F62CB /* Services */,
+				96DFDB9729388F3E000F62CB /* ViewModel */,
+				96DFDB9629388F32000F62CB /* View */,
+				96DFDB9529388F0C000F62CB /* Model */,
 				96F0C37629388BA200B3597F /* Sophos_AppApp.swift */,
 				96F0C37829388BA200B3597F /* ContentView.swift */,
 				96F0C37A29388BA900B3597F /* Assets.xcassets */,
