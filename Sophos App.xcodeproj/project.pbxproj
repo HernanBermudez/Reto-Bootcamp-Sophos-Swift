@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9611F632293B1D2B00B34CEF /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9611F631293B1D2B00B34CEF /* LoginView.swift */; };
+		9611F634293B1D4200B34CEF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9611F633293B1D4200B34CEF /* HomeView.swift */; };
+		9611F636293B1DA400B34CEF /* SendDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9611F635293B1DA400B34CEF /* SendDocumentsView.swift */; };
+		9611F638293B1DB600B34CEF /* SeeDocumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9611F637293B1DB600B34CEF /* SeeDocumentsView.swift */; };
+		9611F63A293B1DCA00B34CEF /* OfficesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9611F639293B1DCA00B34CEF /* OfficesView.swift */; };
+		96940021293F050000B84C36 /* OvalTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940020293F050000B84C36 /* OvalTextFieldStyle.swift */; };
+		96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */; };
+		96940029293F467600B84C36 /* ColorSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940028293F467600B84C36 /* ColorSophos.swift */; };
 		96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37629388BA200B3597F /* Sophos_AppApp.swift */; };
 		96F0C37929388BA200B3597F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37829388BA200B3597F /* ContentView.swift */; };
 		96F0C37B29388BA900B3597F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F0C37A29388BA900B3597F /* Assets.xcassets */; };
@@ -14,6 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9611F631293B1D2B00B34CEF /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9611F633293B1D4200B34CEF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9611F635293B1DA400B34CEF /* SendDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDocumentsView.swift; sourceTree = "<group>"; };
+		9611F637293B1DB600B34CEF /* SeeDocumentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDocumentsView.swift; sourceTree = "<group>"; };
+		9611F639293B1DCA00B34CEF /* OfficesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficesView.swift; sourceTree = "<group>"; };
+		96940020293F050000B84C36 /* OvalTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalTextFieldStyle.swift; sourceTree = "<group>"; };
+		96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleInput.swift; sourceTree = "<group>"; };
+		96940028293F467600B84C36 /* ColorSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSophos.swift; sourceTree = "<group>"; };
 		96F0C37329388BA200B3597F /* Sophos App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sophos App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F0C37629388BA200B3597F /* Sophos_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sophos_AppApp.swift; sourceTree = "<group>"; };
 		96F0C37829388BA200B3597F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,25 +48,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		96DFDB9529388F0C000F62CB /* Model */ = {
+		9611F630293B176000B34CEF /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
-		96DFDB9629388F32000F62CB /* View */ = {
+		9694001F293F04C500B84C36 /* StyledViews */ = {
 			isa = PBXGroup;
 			children = (
+				96940020293F050000B84C36 /* OvalTextFieldStyle.swift */,
+				96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */,
+				96940028293F467600B84C36 /* ColorSophos.swift */,
 			);
-			path = View;
+			path = StyledViews;
 			sourceTree = "<group>";
 		};
-		96DFDB9729388F3E000F62CB /* ViewModel */ = {
+		96DFDB9529388F0C000F62CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96DFDB9629388F32000F62CB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9694001F293F04C500B84C36 /* StyledViews */,
+				96F0C37829388BA200B3597F /* ContentView.swift */,
+				9611F631293B1D2B00B34CEF /* LoginView.swift */,
+				9611F633293B1D4200B34CEF /* HomeView.swift */,
+				9611F635293B1DA400B34CEF /* SendDocumentsView.swift */,
+				9611F637293B1DB600B34CEF /* SeeDocumentsView.swift */,
+				9611F639293B1DCA00B34CEF /* OfficesView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96DFDB9729388F3E000F62CB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		96DFDB9829388F4C000F62CB /* Services */ = {
@@ -86,13 +126,13 @@
 		96F0C37529388BA200B3597F /* Sophos App */ = {
 			isa = PBXGroup;
 			children = (
+				9611F630293B176000B34CEF /* Repositories */,
 				96DFDB9929388F5A000F62CB /* Extensions */,
 				96DFDB9829388F4C000F62CB /* Services */,
-				96DFDB9729388F3E000F62CB /* ViewModel */,
-				96DFDB9629388F32000F62CB /* View */,
-				96DFDB9529388F0C000F62CB /* Model */,
+				96DFDB9729388F3E000F62CB /* ViewModels */,
+				96DFDB9629388F32000F62CB /* Views */,
+				96DFDB9529388F0C000F62CB /* Models */,
 				96F0C37629388BA200B3597F /* Sophos_AppApp.swift */,
-				96F0C37829388BA200B3597F /* ContentView.swift */,
 				96F0C37A29388BA900B3597F /* Assets.xcassets */,
 				96F0C37C29388BA900B3597F /* Preview Content */,
 			);
@@ -177,8 +217,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9611F63A293B1DCA00B34CEF /* OfficesView.swift in Sources */,
+				9611F632293B1D2B00B34CEF /* LoginView.swift in Sources */,
+				9611F634293B1D4200B34CEF /* HomeView.swift in Sources */,
+				96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */,
+				9611F636293B1DA400B34CEF /* SendDocumentsView.swift in Sources */,
 				96F0C37929388BA200B3597F /* ContentView.swift in Sources */,
 				96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */,
+				96940029293F467600B84C36 /* ColorSophos.swift in Sources */,
+				9611F638293B1DB600B34CEF /* SeeDocumentsView.swift in Sources */,
+				96940021293F050000B84C36 /* OvalTextFieldStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
