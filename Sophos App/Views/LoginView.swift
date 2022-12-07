@@ -49,17 +49,23 @@ struct LoginView: View {
                 .cornerRadius(25).padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 .offset(y:-20)
             
-            Button(action: ingresar){
-                Text("Ingresar con huella")
-                    .bold()
-                    .padding(15)
-                    .frame(minWidth: 0, maxWidth: .infinity
-                    ).foregroundColor(colorSophos).background(Color.white)
-                    .overlay(
-                    RoundedRectangle(cornerRadius: 25)
-                        .stroke(colorSophos, lineWidth: 2))
-            }.padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
-                .offset(y: -20)
+            HStack{
+                Image(systemName: "touchid")
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0))
+                Button(action: ingresar){
+                    Text("Ingresar con huella")
+                        .bold()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .foregroundColor(colorSophos)
+                        .background(Color.white)
+                        .padding(EdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 50))
+                        
+                }
+            }.background(RoundedRectangle(cornerRadius: 25)
+                .stroke(colorSophos, lineWidth: 2))
+                .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                .offset(y:-20)
+            
             
         }
         .padding()
