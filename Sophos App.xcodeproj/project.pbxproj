@@ -15,6 +15,8 @@
 		966DC21C29402B4300132602 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966DC21B29402B4300132602 /* Login.swift */; };
 		96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */; };
 		96940029293F467600B84C36 /* ColorSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940028293F467600B84C36 /* ColorSophos.swift */; };
+		96C1D3F2294038D600342DB3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1D3F1294038D600342DB3 /* LoginViewModel.swift */; };
+		96C1D3F4294038FA00342DB3 /* ApiSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1D3F3294038FA00342DB3 /* ApiSophos.swift */; };
 		96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37629388BA200B3597F /* Sophos_AppApp.swift */; };
 		96F0C37929388BA200B3597F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37829388BA200B3597F /* ContentView.swift */; };
 		96F0C37B29388BA900B3597F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F0C37A29388BA900B3597F /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		966DC21B29402B4300132602 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleInput.swift; sourceTree = "<group>"; };
 		96940028293F467600B84C36 /* ColorSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSophos.swift; sourceTree = "<group>"; };
+		96C1D3F1294038D600342DB3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		96C1D3F3294038FA00342DB3 /* ApiSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSophos.swift; sourceTree = "<group>"; };
 		96F0C37329388BA200B3597F /* Sophos App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sophos App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F0C37629388BA200B3597F /* Sophos_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sophos_AppApp.swift; sourceTree = "<group>"; };
 		96F0C37829388BA200B3597F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 		9611F630293B176000B34CEF /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				96C1D3F3294038FA00342DB3 /* ApiSophos.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -78,6 +83,7 @@
 		96DFDB9729388F3E000F62CB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				96C1D3F1294038D600342DB3 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,8 +220,10 @@
 				9611F634293B1D4200B34CEF /* HomeView.swift in Sources */,
 				96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */,
 				9611F636293B1DA400B34CEF /* SendDocumentsView.swift in Sources */,
+				96C1D3F4294038FA00342DB3 /* ApiSophos.swift in Sources */,
 				96F0C37929388BA200B3597F /* ContentView.swift in Sources */,
 				96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */,
+				96C1D3F2294038D600342DB3 /* LoginViewModel.swift in Sources */,
 				96940029293F467600B84C36 /* ColorSophos.swift in Sources */,
 				9611F638293B1DB600B34CEF /* SeeDocumentsView.swift in Sources */,
 				966DC21C29402B4300132602 /* Login.swift in Sources */,
