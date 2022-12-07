@@ -55,16 +55,6 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		9694001F293F04C500B84C36 /* StyledViews */ = {
-			isa = PBXGroup;
-			children = (
-				96940020293F050000B84C36 /* OvalTextFieldStyle.swift */,
-				96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */,
-				96940028293F467600B84C36 /* ColorSophos.swift */,
-			);
-			path = StyledViews;
-			sourceTree = "<group>";
-		};
 		96DFDB9529388F0C000F62CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +65,6 @@
 		96DFDB9629388F32000F62CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9694001F293F04C500B84C36 /* StyledViews */,
 				96F0C37829388BA200B3597F /* ContentView.swift */,
 				9611F631293B1D2B00B34CEF /* LoginView.swift */,
 				9611F633293B1D4200B34CEF /* HomeView.swift */,
@@ -103,6 +92,9 @@
 		96DFDB9929388F5A000F62CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				96940020293F050000B84C36 /* OvalTextFieldStyle.swift */,
+				96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */,
+				96940028293F467600B84C36 /* ColorSophos.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
