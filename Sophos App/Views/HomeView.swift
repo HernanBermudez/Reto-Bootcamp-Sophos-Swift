@@ -7,49 +7,45 @@
 
 import SwiftUI
 
-enum MenuOptions: String, Hashable, CaseIterable {
-    case menuPrincipal = "Menú Principal"
-    case enviarDocumento = "Enviar Documento"
-    case verDocumentos = "Ver Documentos"
-    case oficinas = "Oficinas"
-    case cerrarSesión = "Cerrar Sesión"
-}
-
-struct MenuOption: Hashable {
-    let view: String
-    let option: MenuOptions
-}
-
 struct HomeView: View {
 
-    @State private var selectedOption: MenuOptions?
-    @State private var backButton = "Regresar"
-    @State private var navState = NavigationPath()
     @EnvironmentObject var loginVM : ViewModel
-    
-    let menuOptions = [MenuOption(view: "HomeView", option: .menuPrincipal), MenuOption(view: "SendDocumentsView", option: .enviarDocumento), MenuOption(view: "SeeDocumentsView", option: .verDocumentos), MenuOption(view: "OfficesView", option: .oficinas), MenuOption(view: "LogoutView", option: .cerrarSesión)]
-    let columns: [GridItem] = [.init(.fixed(400)), .init(.fixed(400))]
-    
+    let menuOptions = ["Home", "Send", "See", "Offices", "Logout"]
+
     var body: some View {
-        NavigationSplitView {
-            List(MenuOptions.allCases, id: \.self, selection: $selectedOption) { option in
-                NavigationLink(option.rawValue, value: option)
-            }.navigationTitle(backButton)
+        NavigationSplitView{
+            Text("Contenido")
         } detail: {
-            OfficesView()
-        }.navigationBarBackButtonHidden(true)
-            .navigationTitle(loginVM.user.nombre)
-            .navigationBarTitleDisplayMode(.large).navigationSplitViewStyle(.automatic)
-            .navigationDestination(for: String.self, destination: { view in
-                if view == "HomeView" {
-                    HomeView()
-                } else if view == "SendDocumentsView" {
-                    SendDocumentsView()
-                } else if view == "SeeDocumentsView" {
-                    SeeDocumentsView()
-                } else if view == "OfficesView" {
+            
+        }
+        .toolbar(content: {
+            Menu{
+                NavigationLink("Menú Principal", value: menuOptions[0])
+                NavigationLink("Enviar Documento", value: menuOptions[1])
+                NavigationLink("Ver Documento", value: menuOptions[2])
+                NavigationLink("Ver Oficinas", value: menuOptions[3])
+                NavigationLink("Logout", value: menuOptions[4])
+            } label: {
+                Image(systemName: "list.bullet")
+                    .foregroundColor(colorSophos)
+            }
+            .navigationDestination(for: String.self) { value in
+                ForEach(menuOptions, id:\.self) {option in
                     OfficesView()
                 }
-            })
+            }
+        })
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle(loginVM.user.nombre).navigationBarTitleDisplayMode(.automatic)
+        .environmentObject(loginVM)
+        
+        
+        
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView().environmentObject(ViewModel())
     }
 }

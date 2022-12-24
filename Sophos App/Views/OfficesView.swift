@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct OfficesView: View {
+    @EnvironmentObject var loginVM : ViewModel
     var body: some View {
-        Text("Hello, Offices!")
-    }
-}
-
-struct OfficesView_Previews: PreviewProvider {
-    static var previews: some View {
-        OfficesView()
+        VStack{
+            Text("Hello, this are our offices, \(loginVM.user.nombre)")
+        }
     }
 }

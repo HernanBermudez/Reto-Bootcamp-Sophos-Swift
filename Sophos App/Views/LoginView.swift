@@ -7,15 +7,17 @@
 import Combine
 import SwiftUI
 
+
 struct LoginView: View {
     // Variables for user inputs
     @ObservedObject var loginVM = ViewModel()
     @EnvironmentObject var authentication: Authentication
     @State var complete: Bool = false
     @State var inProgress: Bool = false
+    @State var isPresented: Bool = false
     
     var body: some View {
-        NavigationStack(path: $loginVM.loggingIn){
+        NavigationSplitView{
             VStack {
                 Image("logo")
                 Text("Ingresa tus datos para acceder")
@@ -44,16 +46,16 @@ struct LoginView: View {
                 AsyncButton(isComplete: loginVM.isLoggedIn, action: {
                     if let errorMessage = loginVM.validView(email: loginVM.email, password: loginVM.password) {
                         loginVM.loginErrors = errorMessage
-                        
                     } else {
                         loginVM.loginErrors = ""
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             withAnimation { complete = loginVM.isLoggedIn }
+                            isPresented = true
                         }
                     }
                 }) {
-                    Text(complete || inProgress ? "" : "Ingresar")
+                    NavigationLink(complete || inProgress ? "" : "Ingresar", value: true)
                 }
                 
                 HStack{
@@ -72,9 +74,13 @@ struct LoginView: View {
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 //.offset(y:-20)
             }.padding()
-                .navigationDestination(for: Bool.self){_ in
-                    HomeView()
-                }
+                .navigationDestination(isPresented: $isPresented, destination: {
+                    NavigationStack{
+                        HomeView()
+                    }
+                })
+        } detail: {
+            
         }.environmentObject(loginVM)
     }
 }

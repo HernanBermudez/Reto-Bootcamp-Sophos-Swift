@@ -45,7 +45,7 @@ class ViewModel: ObservableObject {
         return emailPred.evaluate(with: email)
     }
     
-    func logIn(email: String, password: String) async {
+    func logIn (email: String, password: String) async {
         
         print("Iniciando sesion")
         let userLoggingIn : String = "idUsuario=" + email.lowercased() + "&clave=" + password
