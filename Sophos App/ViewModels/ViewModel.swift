@@ -17,6 +17,7 @@ class ViewModel: ObservableObject {
     @Published var loggingIn = NavigationPath()
     @Published var user = UserModel()
     @Published var inProgress: Bool = false
+    @Published var isPresented: Bool = false
     
     func validView(email: String, password: String) -> String? {
       
@@ -63,6 +64,7 @@ class ViewModel: ObservableObject {
                 user = decodedResponse
                 print(user.nombre)
                 isLoggedIn = user.acceso
+                isPresented = true
                 UserDefaults.standard.set(email, forKey: "emailUser")
                 loggingIn.append(true)
             }

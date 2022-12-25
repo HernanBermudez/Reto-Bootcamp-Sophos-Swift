@@ -14,7 +14,6 @@ struct LoginView: View {
     @EnvironmentObject var authentication: Authentication
     @State var complete: Bool = false
     @State var inProgress: Bool = false
-    @State var isPresented: Bool = false
     
     var body: some View {
         NavigationSplitView{
@@ -51,7 +50,6 @@ struct LoginView: View {
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             withAnimation { complete = loginVM.isLoggedIn }
-                            isPresented = true
                         }
                     }
                 }) {
@@ -74,7 +72,7 @@ struct LoginView: View {
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 //.offset(y:-20)
             }.padding()
-                .navigationDestination(isPresented: $isPresented, destination: {
+                .navigationDestination(isPresented: $loginVM.isPresented, destination: {
                     NavigationStack{
                         HomeView()
                     }
