@@ -9,7 +9,14 @@ import SwiftUI
 
 struct SendDocumentsView: View {
     var body: some View {
-        Text("Hello, ready to send your docs?")
+        NavigationSplitView {
+            Text("Hello, ready to send your docs?")
+        } detail: {
+            
+        }.toolbar(content: {
+            NavMenu()
+        })
+        .navigationTitle("Regresar")
     }
 }
 

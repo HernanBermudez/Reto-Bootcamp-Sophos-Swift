@@ -9,7 +9,16 @@ import SwiftUI
 
 struct SeeDocumentsView: View {
     var body: some View {
-        Text("Hello, check out your docs!")
+        NavigationSplitView {
+            Text("Hello, check out your docs!")
+        } detail: {
+            
+        }.toolbar(content: {
+            NavMenu()
+        })
+        .navigationTitle("Regresar")
+
+        
     }
 }
 

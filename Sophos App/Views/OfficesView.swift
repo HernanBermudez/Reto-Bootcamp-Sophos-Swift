@@ -10,8 +10,17 @@ import SwiftUI
 struct OfficesView: View {
     @EnvironmentObject var loginVM : ViewModel
     var body: some View {
-        VStack{
-            Text("Hello, this are our offices, \(loginVM.user.nombre)")
-        }
+        NavigationSplitView {
+            VStack{
+                Text("Hello, this are our offices, \(loginVM.user.nombre)")
+            }
+        } detail: {
+            
+        }.toolbar(content: {
+            NavMenu()
+        })
+        .navigationTitle("Regresar")
+
+        
     }
 }

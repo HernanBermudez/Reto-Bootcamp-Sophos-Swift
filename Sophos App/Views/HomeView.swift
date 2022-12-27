@@ -113,9 +113,6 @@ struct HomeView: View {
         .navigationBarBackButtonHidden(true)
         .navigationTitle(loginVM.user.nombre).navigationBarTitleDisplayMode(.inline)
         .environmentObject(loginVM)
-        
-        
-        
     }
 }
 

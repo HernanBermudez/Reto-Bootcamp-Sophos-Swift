@@ -9,7 +9,14 @@ import SwiftUI
 
 struct LogoutView: View {
     var body: some View {
-        Text("Hello, let's logout!")
+        NavigationSplitView {
+            Text("Hello, let's logout!")
+        } detail: {
+            
+        }.toolbar(content: {
+            NavMenu()
+        })
+        .navigationTitle("Regresar")
     }
 }
 
