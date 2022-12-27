@@ -21,23 +21,24 @@ struct NavMenu: View {
                 .foregroundColor(colorSophos)
         }
         .navigationDestination(for: String.self) { value in
-            ForEach(menuOptions, id:\.self) {option in
-                if option == "Home" {
-                    HomeView()
-                }
-                if option == "Send" {
-                    SendDocumentsView()
-                }
-                if option == "See" {
-                    SeeDocumentsView()
-                }
-                if option == "Offices" {
-                    OfficesView()
-                }
-                if option == "Logout" {
-                    LogoutView()
-                }
+            if value == "Home" {
+                HomeView()
             }
+            if value == "Send" {
+                SendDocumentsView()
+            }
+            if value == "See" {
+                SeeDocumentsView()
+            }
+            if value == "Offices" {
+                OfficesView()
+            }
+            if value == "Logout" {
+                LogoutView()
+            }
+            //ForEach(menuOptions, id:\.self) {option in
+                
+            //}
         }    }
 }
 
