@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
 
     @EnvironmentObject var loginVM : ViewModel
-    let menuOptions = ["Home", "Send", "See", "Offices", "Logout"]
 
     var body: some View {
         NavigationSplitView{
@@ -29,6 +28,9 @@ struct HomeView: View {
                         .foregroundColor(Color.white)
                         .padding(EdgeInsets(top: 150.0, leading: 20.0, bottom: 0, trailing: 0))
                 }
+                
+                _VSpacer()
+                
                 VStack(spacing: 20.0){
                     HStack{
                         Image(systemName: "doc.text.fill")
@@ -38,17 +40,22 @@ struct HomeView: View {
                         
                     } label: {
                         Text("Ingresar")
-                    }.overlay(
+                            .padding(20)
+                    }
+                    .frame(width: 100.0, height: 50.0, alignment: .trailing)
+                    .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(.red, lineWidth: 4)
+                            .stroke(Color.pink, lineWidth: 4)
                     )
 
                 }.padding(20.0)
                     .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(.red, lineWidth: 4)
-                        )
-                    .frame(width: .infinity)
+                                .stroke(Color.pink, lineWidth: 4)
+                                .frame(width: 320.0, height: 150.0, alignment: .center)
+                    )
+                
+                Spacer()
                 
                 VStack(spacing: 20.0){
                     HStack{
@@ -61,16 +68,18 @@ struct HomeView: View {
                         Text("Ingresar")
                     }.overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(.purple, lineWidth: 4)
+                            .stroke(Color.indigo, lineWidth: 4)
                     )
 
                 }.padding(20.0)
                     .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(.purple, lineWidth: 4)
+                                .stroke(Color.indigo, lineWidth: 4)
                         )
                     .frame(width: .infinity)
 
+                Spacer()
+                
                 VStack(spacing: 20.0){
                     HStack{
                         Image(systemName: "doc.text.fill")
@@ -91,27 +100,15 @@ struct HomeView: View {
                                 .stroke(Color.green, lineWidth: 4)
                         )
                     .frame(width: .infinity)
+                
+                Spacer()
 
             }
         } detail: {
             
         }
         .toolbar(content: {
-            Menu{
-                NavigationLink("Menú Principal", value: menuOptions[0])
-                NavigationLink("Enviar Documento", value: menuOptions[1])
-                NavigationLink("Ver Documento", value: menuOptions[2])
-                NavigationLink("Ver Oficinas", value: menuOptions[3])
-                NavigationLink("Logout", value: menuOptions[4])
-            } label: {
-                Image(systemName: "list.bullet")
-                    .foregroundColor(colorSophos)
-            }
-            .navigationDestination(for: String.self) { value in
-                ForEach(menuOptions, id:\.self) {option in
-                    OfficesView()
-                }
-            }
+            NavMenu()
         })
         .navigationBarBackButtonHidden(true)
         .navigationTitle(loginVM.user.nombre).navigationBarTitleDisplayMode(.inline)
