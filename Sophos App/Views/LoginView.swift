@@ -51,6 +51,7 @@ struct LoginView: View {
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             withAnimation { complete = loginVM.isLoggedIn }
+                            await officesVM.fetchOffices()
                         }
                     }
                 }) {
@@ -75,11 +76,7 @@ struct LoginView: View {
             }.padding()
                 .navigationDestination(isPresented: $loginVM.isPresented, destination: {
                     NavigationStack{
-                        HomeView().onAppear{
-                            Task{
-                                await officesVM.fetchOffices()
-                            }
-                        }
+                        HomeView()
                     }
                 })
         } detail: {
