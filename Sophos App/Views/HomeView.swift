@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     @EnvironmentObject var loginVM : LoginViewModel
+    @EnvironmentObject var officesVM : OfficesViewModel
 
     var body: some View {
         NavigationSplitView{
@@ -117,5 +118,6 @@ struct HomeView: View {
         })
         .navigationBarBackButtonHidden(true)
         .environmentObject(loginVM)
+        .environmentObject(officesVM)
     }
 }

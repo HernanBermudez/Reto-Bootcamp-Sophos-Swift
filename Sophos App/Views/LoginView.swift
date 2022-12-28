@@ -11,6 +11,7 @@ import SwiftUI
 struct LoginView: View {
     // Variables for user inputs
     @ObservedObject var loginVM = LoginViewModel()
+    @ObservedObject var officesVM = OfficesViewModel()
     @EnvironmentObject var authentication: Authentication
     @State var complete: Bool = false
     @State var inProgress: Bool = false
@@ -74,12 +75,17 @@ struct LoginView: View {
             }.padding()
                 .navigationDestination(isPresented: $loginVM.isPresented, destination: {
                     NavigationStack{
-                        HomeView()
+                        HomeView().onAppear{
+                            Task{
+                                await officesVM.fetchOffices()
+                            }
+                        }
                     }
                 })
         } detail: {
             
         }.environmentObject(loginVM)
+            .environmentObject(officesVM)
             .navigationBarBackButtonHidden(true)
     }
 }
