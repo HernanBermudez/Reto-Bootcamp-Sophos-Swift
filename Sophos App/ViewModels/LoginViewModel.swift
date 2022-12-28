@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 @MainActor
-class ViewModel: ObservableObject {
+class LoginViewModel: ObservableObject {
     @Published var email: String = UserDefaults.standard.string(forKey: "emailUser") ?? ""
     @Published var password: String = "0S9Hh6WA3m4i"
     @Published var loginErrors: String = ""

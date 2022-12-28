@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
 
-    @EnvironmentObject var loginVM : ViewModel
+    @EnvironmentObject var loginVM : LoginViewModel
 
     var body: some View {
         NavigationSplitView{
@@ -117,11 +117,5 @@ struct HomeView: View {
         })
         .navigationBarBackButtonHidden(true)
         .environmentObject(loginVM)
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView().environmentObject(ViewModel())
     }
 }

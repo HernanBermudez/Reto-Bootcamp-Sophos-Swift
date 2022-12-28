@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AsyncButton<Content: View>: View {
     
-    @StateObject var loginVM = ViewModel()
+    @StateObject var loginVM = LoginViewModel()
     
     var isComplete: Bool
     let action: ()->()

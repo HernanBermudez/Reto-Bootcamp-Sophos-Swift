@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
     // Variables for user inputs
-    @ObservedObject var loginVM = ViewModel()
+    @ObservedObject var loginVM = LoginViewModel()
     @EnvironmentObject var authentication: Authentication
     @State var complete: Bool = false
     @State var inProgress: Bool = false

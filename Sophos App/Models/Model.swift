@@ -7,12 +7,24 @@
 
 import Foundation
 
-struct UserModel: Decodable {
+struct UserModel : Decodable {
     var id : String = ""
     var nombre : String = ""
     var apellido : String = ""
     var acceso : Bool = false
     var admin : Bool = false
+}
+
+struct OfficesItems : Decodable {
+    var Items: [Offices]
+}
+
+struct Offices : Decodable {
+    var ciudad : String = ""
+    var longitud : String = ""
+    var idOficina : Int = 0
+    var latitud : String = ""
+    var nombre : String = ""
 }
 
 struct SendDocumentModel: Codable {
