@@ -23,7 +23,6 @@
 		96C1D3F4294038FA00342DB3 /* ApiSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1D3F3294038FA00342DB3 /* ApiSophos.swift */; };
 		96C1FABB2955511300771644 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1FABA2955511300771644 /* UserData.swift */; };
 		96C1FAC12955724800771644 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1FAC02955724800771644 /* HomeView.swift */; };
-		96C1FAC32955892100771644 /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1FAC22955892100771644 /* LogoutView.swift */; };
 		96DA3941295037BB0094605B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA3940295037BB0094605B /* LoginViewModel.swift */; };
 		96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37629388BA200B3597F /* Sophos_AppApp.swift */; };
 		96F0C37B29388BA900B3597F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F0C37A29388BA900B3597F /* Assets.xcassets */; };
@@ -47,7 +46,6 @@
 		96C1D3F3294038FA00342DB3 /* ApiSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSophos.swift; sourceTree = "<group>"; };
 		96C1FABA2955511300771644 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		96C1FAC02955724800771644 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		96C1FAC22955892100771644 /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		96DA3940295037BB0094605B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		96F0C37329388BA200B3597F /* Sophos App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sophos App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F0C37629388BA200B3597F /* Sophos_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sophos_AppApp.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				9611F637293B1DB600B34CEF /* SeeDocumentsView.swift */,
 				9611F639293B1DCA00B34CEF /* OfficesView.swift */,
 				96C1FAC02955724800771644 /* HomeView.swift */,
-				96C1FAC22955892100771644 /* LogoutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,7 +245,6 @@
 				969867D229528C3800E1C1FE /* Authentication.swift in Sources */,
 				96DA3941295037BB0094605B /* LoginViewModel.swift in Sources */,
 				969867D62952B13900E1C1FE /* ViewModel.swift in Sources */,
-				96C1FAC32955892100771644 /* LogoutView.swift in Sources */,
 				96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */,
 				96C1FAC12955724800771644 /* HomeView.swift in Sources */,
 				96C1FABB2955511300771644 /* UserData.swift in Sources */,

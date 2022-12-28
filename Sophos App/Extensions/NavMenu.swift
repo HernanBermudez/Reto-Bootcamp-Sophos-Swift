@@ -21,6 +21,7 @@ struct NavMenu: View {
                 .foregroundColor(colorSophos)
         }
         .navigationDestination(for: String.self) { value in
+            
             if value == "Home" {
                 HomeView()
             }
@@ -34,11 +35,9 @@ struct NavMenu: View {
                 OfficesView()
             }
             if value == "Logout" {
-                LogoutView()
+                LoginView()
             }
-            //ForEach(menuOptions, id:\.self) {option in
-                
-            //}
-        }    }
+        }
+    }
 }
 

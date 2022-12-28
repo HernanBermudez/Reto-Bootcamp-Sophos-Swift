@@ -16,7 +16,7 @@ struct SendDocumentsView: View {
         }.toolbar(content: {
             NavMenu()
         })
-        .navigationTitle("Regresar")
+        .navigationTitle("Envío de Documentación")
     }
 }
 

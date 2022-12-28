@@ -19,8 +19,6 @@ struct OfficesView: View {
         }.toolbar(content: {
             NavMenu()
         })
-        .navigationTitle("Regresar")
-
-        
+        .navigationTitle("Oficinas")
     }
 }

@@ -80,6 +80,7 @@ struct LoginView: View {
         } detail: {
             
         }.environmentObject(loginVM)
+            .navigationBarBackButtonHidden(true)
     }
 }
 

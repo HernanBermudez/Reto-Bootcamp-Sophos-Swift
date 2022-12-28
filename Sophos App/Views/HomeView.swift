@@ -17,7 +17,7 @@ struct HomeView: View {
                 ZStack(alignment: .topLeading){
                     Image("background")
                         .resizable()
-                        .frame(width: .infinity, height: 240.0)
+                        .frame(width: 400.0, height: 240.0)
                         
                     Text("Bienvenido")
                         .foregroundColor(Color.white)
@@ -108,10 +108,14 @@ struct HomeView: View {
             
         }
         .toolbar(content: {
+            Text(loginVM.user.nombre)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 220.0))
+                .font(.system(size: 26))
+                .fontWidth(.standard)
+                .foregroundColor(colorSophos)
             NavMenu()
         })
         .navigationBarBackButtonHidden(true)
-        .navigationTitle(loginVM.user.nombre).navigationBarTitleDisplayMode(.inline)
         .environmentObject(loginVM)
     }
 }
