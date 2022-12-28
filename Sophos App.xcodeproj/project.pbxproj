@@ -14,6 +14,7 @@
 		9633AF86295B4ECF00279575 /* NavMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633AF85295B4ECF00279575 /* NavMenu.swift */; };
 		967EFA51294129C100787FF2 /* UIKeyboardBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */; };
 		967EFA5329412A7A00787FF2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967EFA5229412A7A00787FF2 /* Model.swift */; };
+		9681EB6B295BEAFD001C0BA1 /* OfficesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9681EB6A295BEAFD001C0BA1 /* OfficesViewModel.swift */; };
 		96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */; };
 		96940029293F467600B84C36 /* ColorSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96940028293F467600B84C36 /* ColorSophos.swift */; };
 		969867D229528C3800E1C1FE /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969867D129528C3800E1C1FE /* Authentication.swift */; };
@@ -35,6 +36,7 @@
 		9633AF85295B4ECF00279575 /* NavMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavMenu.swift; sourceTree = "<group>"; };
 		967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardBehaviour.swift; sourceTree = "<group>"; };
 		967EFA5229412A7A00787FF2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		9681EB6A295BEAFD001C0BA1 /* OfficesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficesViewModel.swift; sourceTree = "<group>"; };
 		96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleInput.swift; sourceTree = "<group>"; };
 		96940028293F467600B84C36 /* ColorSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSophos.swift; sourceTree = "<group>"; };
 		969867D129528C3800E1C1FE /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				969867D52952B13900E1C1FE /* LoginViewModel.swift */,
+				9681EB6A295BEAFD001C0BA1 /* OfficesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				96C1FAC12955724800771644 /* HomeView.swift in Sources */,
 				96940029293F467600B84C36 /* ColorSophos.swift in Sources */,
 				9611F638293B1DB600B34CEF /* SeeDocumentsView.swift in Sources */,
+				9681EB6B295BEAFD001C0BA1 /* OfficesViewModel.swift in Sources */,
 				967EFA5329412A7A00787FF2 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

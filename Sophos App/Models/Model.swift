@@ -16,15 +16,17 @@ struct UserModel : Decodable {
 }
 
 struct OfficesItems : Decodable {
-    var Items: [Offices]
+    var Items: Array<Offices>
+    var Count : Int = 0
+    var ScannedCount : Int = 0
 }
 
 struct Offices : Decodable {
-    var ciudad : String = ""
-    var longitud : String = ""
-    var idOficina : Int = 0
-    var latitud : String = ""
-    var nombre : String = ""
+    var Ciudad : String = ""
+    var Longitud : String = ""
+    var IdOficina : Int = 0
+    var Latitud : String = ""
+    var Nombre : String = ""
 }
 
 struct SendDocumentModel: Codable {
