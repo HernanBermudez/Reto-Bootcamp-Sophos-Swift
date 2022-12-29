@@ -11,11 +11,10 @@ import MapKit
 @MainActor
 class OfficesViewModel : ObservableObject {
     @Published var offices = OfficesItems(Items: [Offices()])
-    @Published var longitudes : Array<CLLocationDegrees> = []
-    @Published var latitudes : Array<CLLocationDegrees> = []
     @Published var coordinates : Array<CLLocationCoordinate2D> = []
+    @Published var officeName : Array<String> = []
+    @Published var annotations : Array<OfficePin> = []
     @Published var officeToShow = MKCoordinateRegion()
-    @Published var officesPin = []
     
     func fetchOffices() async {
         
@@ -31,17 +30,12 @@ class OfficesViewModel : ObservableObject {
             if let decodedResponse = try! JSONDecoder().decode(OfficesItems?.self, from: data){
                 offices = decodedResponse
                 for (index, office) in offices.Items.enumerated(){
-                    longitudes.append(CLLocationDegrees(office.Longitud)!)
-                    latitudes.append(CLLocationDegrees(office.Latitud)!)
                     coordinates.append(CLLocationCoordinate2D(latitude: CLLocationDegrees(office.Latitud)!, longitude: CLLocationDegrees(office.Longitud)!))
-                    officesPin.append(office.Nombre)
-                    officesPin.append(coordinates[index])
+                    officeName.append(office.Nombre)
+                    annotations.append(OfficePin(name: officeName[index], coordinate: coordinates[index]))
                 }
-                print(longitudes[2])
-                print(latitudes[2])
-                officeToShow = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitudes[3], longitude: longitudes[3]), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                officeToShow = MKCoordinateRegion(center: coordinates[3], span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 print(officeToShow)
-                print("\(officesPin[4]) loc: \(officesPin[5])")
             }
         } catch {
             print("Could not find offices nearby")
