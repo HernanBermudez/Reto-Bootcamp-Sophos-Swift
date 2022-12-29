@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct UserModel : Decodable {
     var id : String = ""
@@ -27,6 +28,12 @@ struct Offices : Decodable {
     var IdOficina : Int = 0
     var Latitud : String = ""
     var Nombre : String = ""
+}
+
+struct OfficePin: Identifiable {
+    let id = UUID()
+    let name: String
+    let coordinate: CLLocationCoordinate2D
 }
 
 struct SendDocumentModel: Codable {
