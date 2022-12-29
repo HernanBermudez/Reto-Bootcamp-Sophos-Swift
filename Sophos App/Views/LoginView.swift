@@ -11,10 +11,8 @@ import SwiftUI
 struct LoginView: View {
     // Variables for user inputs
     @ObservedObject var loginVM = LoginViewModel()
-    @ObservedObject var officesVM = OfficesViewModel()
+    //@ObservedObject var officesVM = OfficesViewModel()
     @EnvironmentObject var authentication: Authentication
-    @State var complete: Bool = false
-    @State var inProgress: Bool = false
     
     var body: some View {
         NavigationSplitView{
@@ -50,12 +48,12 @@ struct LoginView: View {
                         loginVM.loginErrors = ""
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
-                            withAnimation { complete = loginVM.isLoggedIn }
-                            await officesVM.fetchOffices()
+                            withAnimation { loginVM.complete = loginVM.isLoggedIn }
+                            //await officesVM.fetchOffices()
                         }
                     }
                 }) {
-                    NavigationLink(complete || inProgress ? "" : "Ingresar", value: true)
+                    NavigationLink(loginVM.complete || loginVM.inProgress ? "" : "Ingresar", value: true)
                 }
                 
                 HStack{
@@ -82,7 +80,7 @@ struct LoginView: View {
         } detail: {
             
         }.environmentObject(loginVM)
-            .environmentObject(officesVM)
+            //.environmentObject(officesVM)
             .navigationBarBackButtonHidden(true)
     }
 }
