@@ -7,17 +7,42 @@
 
 import SwiftUI
 import MapKit
+import CoreLocationUI
 
 struct OfficesView: View {
     
     @ObservedObject var officesVM = OfficesViewModel()
+    @StateObject var locationManager = LocationManager()
     
     var body: some View {
         NavigationSplitView {
-            Map(coordinateRegion: $officesVM.officeToShow, annotationItems: officesVM.annotations){
-                MapMarker(coordinate: $0.coordinate)
+            ZStack{
+                Map(coordinateRegion: $officesVM.officeToShow, showsUserLocation: true, annotationItems: officesVM.annotations){
+                    MapMarker(coordinate: $0.coordinate)
+                }
+                            .ignoresSafeArea()
+                
+                VStack {
+                    if let location = locationManager.location {
+                        Text("**Current location:** \(location.latitude), \(location.longitude)")
+                            .font(.callout)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(.gray)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+
+                    Spacer()
+                    LocationButton {
+                        locationManager.requestLocation()
+                    }
+                    .frame(width: 180, height: 40)
+                    .cornerRadius(30)
+                    .symbolVariant(.fill)
+                    .foregroundColor(.white)
+                }
+                .padding()
             }
-                        .frame(width: 400, height: 700)
         } detail: {
             
         }.toolbar(content: {
