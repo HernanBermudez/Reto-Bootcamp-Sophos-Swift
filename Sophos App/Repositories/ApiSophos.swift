@@ -10,3 +10,4 @@ import Foundation
 let apiUrl = "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/"
 let logInUrl = "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Usuarios?"
 let officesUrl = "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Oficinas"
+let documentosUrl = "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos"
