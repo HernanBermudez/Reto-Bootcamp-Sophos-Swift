@@ -15,6 +15,7 @@ class OfficesViewModel : ObservableObject {
     @Published var officeName : Array<String> = []
     @Published var annotations : Array<OfficePin> = []
     @Published var officeToShow = MKCoordinateRegion()
+    @Published var officesCities : Array<String> = []
     
     func fetchOffices() async {
         
@@ -33,6 +34,7 @@ class OfficesViewModel : ObservableObject {
                     coordinates.append(CLLocationCoordinate2D(latitude: CLLocationDegrees(office.Latitud)!, longitude: CLLocationDegrees(office.Longitud)!))
                     officeName.append(office.Nombre)
                     annotations.append(OfficePin(name: officeName[index], coordinate: coordinates[index]))
+                    officesCities.append(office.Ciudad)
                 }
                 officeToShow = MKCoordinateRegion(center: coordinates[3], span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
                 print(officeToShow)
