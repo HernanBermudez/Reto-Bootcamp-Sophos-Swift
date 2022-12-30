@@ -27,6 +27,7 @@
 		96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37629388BA200B3597F /* Sophos_AppApp.swift */; };
 		96F0C37B29388BA900B3597F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F0C37A29388BA900B3597F /* Assets.xcassets */; };
 		96F0C37E29388BA900B3597F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96F0C37D29388BA900B3597F /* Preview Assets.xcassets */; };
+		96F280C1295E982A009A482D /* SendDocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F280C0295E982A009A482D /* SendDocumentsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		96F0C37629388BA200B3597F /* Sophos_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sophos_AppApp.swift; sourceTree = "<group>"; };
 		96F0C37A29388BA900B3597F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96F0C37D29388BA900B3597F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		96F280C0295E982A009A482D /* SendDocumentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendDocumentsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				969867D52952B13900E1C1FE /* LoginViewModel.swift */,
 				9681EB6A295BEAFD001C0BA1 /* OfficesViewModel.swift */,
+				96F280C0295E982A009A482D /* SendDocumentsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				9611F638293B1DB600B34CEF /* SeeDocumentsView.swift in Sources */,
 				9681EB6B295BEAFD001C0BA1 /* OfficesViewModel.swift in Sources */,
 				967EFA5329412A7A00787FF2 /* Model.swift in Sources */,
+				96F280C1295E982A009A482D /* SendDocumentsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
