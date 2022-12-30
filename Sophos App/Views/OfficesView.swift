@@ -11,7 +11,7 @@ import CoreLocationUI
 
 struct OfficesView: View {
     
-    @ObservedObject var officesVM = OfficesViewModel()
+    @EnvironmentObject var officesVM : OfficesViewModel
     @StateObject var locationManager = LocationManager()
     
     var body: some View {
@@ -48,11 +48,6 @@ struct OfficesView: View {
         }.toolbar(content: {
             NavMenu()
         })
-        .onAppear{
-            Task{
-                await officesVM.fetchOffices()
-            }
-        }
         .environmentObject(officesVM)
         .navigationTitle("Oficinas")
     }

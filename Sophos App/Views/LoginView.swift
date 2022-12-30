@@ -11,6 +11,7 @@ import SwiftUI
 struct LoginView: View {
     // Variables for user inputs
     @ObservedObject var loginVM = LoginViewModel()
+    @ObservedObject var officesVM = OfficesViewModel()
     //@ObservedObject var officesVM = OfficesViewModel()
     @EnvironmentObject var authentication: Authentication
     
@@ -49,6 +50,7 @@ struct LoginView: View {
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             withAnimation { loginVM.complete = loginVM.isLoggedIn }
+                            await officesVM.fetchOffices()
                             //await officesVM.fetchOffices()
                         }
                     }
@@ -80,7 +82,7 @@ struct LoginView: View {
         } detail: {
             
         }.environmentObject(loginVM)
-            //.environmentObject(officesVM)
+            .environmentObject(officesVM)
             .navigationBarBackButtonHidden(true)
     }
 }
