@@ -11,6 +11,7 @@ struct HomeView: View {
 
     @EnvironmentObject var loginVM : LoginViewModel
     @EnvironmentObject var officesVM : OfficesViewModel
+    let navOptions = [0, 1, 2]
 
     var body: some View {
         NavigationSplitView{
@@ -40,8 +41,10 @@ struct HomeView: View {
                     Button {
                         
                     } label: {
-                        Text("Ingresar")
-                            .padding(20)
+                        NavigationLink(value: navOptions[0]) {
+                            Text("Ingresar")
+                                .padding(20)
+                        }
                     }
                     .frame(width: 100.0, height: 50.0, alignment: .trailing)
                     .overlay(
@@ -66,7 +69,10 @@ struct HomeView: View {
                     Button {
                         
                     } label: {
-                        Text("Ingresar")
+                        NavigationLink(value: navOptions[1]) {
+                            Text("Ingresar")
+                                .padding(20)
+                        }
                     }.overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Color.indigo, lineWidth: 4)
@@ -89,7 +95,10 @@ struct HomeView: View {
                     Button {
                         
                     } label: {
-                        Text("Ingresar")
+                        NavigationLink(value: navOptions[2]) {
+                            Text("Ingresar")
+                                .padding(20)
+                        }
                     }.overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(.green, lineWidth: 4)
@@ -105,6 +114,18 @@ struct HomeView: View {
                 Spacer()
 
             }
+            .navigationDestination(for: Int.self, destination: { option in
+                switch option{
+                case 0:
+                    SendDocumentsView()
+                case 1:
+                    SeeDocumentsView()
+                case 2:
+                    OfficesView()
+                default:
+                    HomeView()
+                }
+            })
         } detail: {
             
         }
