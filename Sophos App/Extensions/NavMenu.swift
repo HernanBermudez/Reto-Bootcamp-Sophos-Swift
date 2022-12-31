@@ -30,18 +30,17 @@ struct NavMenu: View {
                 .foregroundColor(colorSophos)
         }
         .navigationDestination(for: String.self) { value in
-            
-            if value == "Home" {
+            switch value{
+            case "Home":
                 HomeView()
-            }
-            if value == "Send" {
+            case "Send":
                 SendDocumentsView()
-            }
-            if value == "See" {
+            case "See":
                 SeeDocumentsView()
-            }
-            if value == "Offices" {
+            case "Offices":
                 OfficesView()
+            default:
+                HomeView()
             }
         }.environmentObject(loginVM)
     }
