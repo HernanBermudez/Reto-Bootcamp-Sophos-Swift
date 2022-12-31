@@ -17,6 +17,15 @@ class OfficesViewModel : ObservableObject {
     @Published var officeToShow = MKCoordinateRegion()
     @Published var officesCities : Array<String> = []
     
+    func resetOffices() async {
+        offices.Items.removeAll()
+        coordinates.removeAll()
+        officeName.removeAll()
+        annotations.removeAll()
+        officeToShow = MKCoordinateRegion()
+        officesCities.removeAll()
+    }
+    
     func fetchOffices() async {
         
         guard let url = URL(string: officesUrl) else {

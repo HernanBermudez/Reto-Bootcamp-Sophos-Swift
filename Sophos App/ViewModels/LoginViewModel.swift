@@ -47,6 +47,19 @@ class LoginViewModel: ObservableObject {
         return emailPred.evaluate(with: email)
     }
     
+    func signOut() async {
+        do{
+            try await Task.sleep(nanoseconds: 1_000_000_000)
+            isLoggedIn.toggle()
+            isPresented.toggle()
+            loggingIn.append(false)
+            inProgress.toggle()
+            complete.toggle()
+        }catch{
+            print("Ocurrió un error al intentar cerrar sesión")
+        }
+    }
+    
     func logIn (email: String, password: String) async {
         
         print("Iniciando sesion")
@@ -60,7 +73,7 @@ class LoginViewModel: ObservableObject {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            inProgress = true
+            inProgress.toggle()
             if let decodedResponse = try JSONDecoder().decode(UserModel?.self, from: data){
                 user = decodedResponse
                 print(user.nombre)
@@ -70,6 +83,7 @@ class LoginViewModel: ObservableObject {
                 loggingIn.append(true)
             }
         } catch {
+            inProgress.toggle()
             loginErrors = "Usuario o contraseña incorrectos"
             print("Invalid data")
         }

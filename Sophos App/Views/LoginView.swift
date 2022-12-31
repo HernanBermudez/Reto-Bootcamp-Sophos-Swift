@@ -12,7 +12,6 @@ struct LoginView: View {
     // Variables for user inputs
     @ObservedObject var loginVM = LoginViewModel()
     @ObservedObject var officesVM = OfficesViewModel()
-    //@ObservedObject var officesVM = OfficesViewModel()
     @EnvironmentObject var authentication: Authentication
     
     var body: some View {
@@ -51,7 +50,6 @@ struct LoginView: View {
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             withAnimation { loginVM.complete = loginVM.isLoggedIn }
                             await officesVM.fetchOffices()
-                            //await officesVM.fetchOffices()
                         }
                     }
                 }) {
