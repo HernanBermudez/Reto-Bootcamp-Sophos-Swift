@@ -13,8 +13,11 @@ struct SendDocumentsView: View {
     @EnvironmentObject var officesVM : OfficesViewModel
     let idTypes = ["Cédula de Ciudadanía", "Tarjeta de Identidad", "Pasaporte", "Cédula de Extranjería"]
     let imageSelection = ["Cargar Foto", "Tomar Foto"]
-    @State private var selection : String = "Cédula de Ciudadanía"
-    @State var someText: String = "hOLA"
+    @State var selection : String = "Cédula de Ciudadanía"
+    
+    init() {
+        self._selection = State(initialValue: idTypes.first ?? "")
+    }
     var body: some View {
         NavigationSplitView {
             Menu {
