@@ -13,6 +13,8 @@
 		9611F63A293B1DCA00B34CEF /* OfficesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9611F639293B1DCA00B34CEF /* OfficesView.swift */; };
 		9629E461295D401300CA3BF2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9629E460295D401300CA3BF2 /* LocationManager.swift */; };
 		9633AF86295B4ECF00279575 /* NavMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633AF85295B4ECF00279575 /* NavMenu.swift */; };
+		963DCD57295FEB3100A61211 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DCD56295FEB3100A61211 /* ImagePicker.swift */; };
+		96688079295FBE6D00FECB04 /* EncodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96688078295FBE6D00FECB04 /* EncodeImage.swift */; };
 		967EFA51294129C100787FF2 /* UIKeyboardBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */; };
 		967EFA5329412A7A00787FF2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967EFA5229412A7A00787FF2 /* Model.swift */; };
 		9681EB6B295BEAFD001C0BA1 /* OfficesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9681EB6A295BEAFD001C0BA1 /* OfficesViewModel.swift */; };
@@ -37,6 +39,8 @@
 		9611F639293B1DCA00B34CEF /* OfficesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficesView.swift; sourceTree = "<group>"; };
 		9629E460295D401300CA3BF2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9633AF85295B4ECF00279575 /* NavMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavMenu.swift; sourceTree = "<group>"; };
+		963DCD56295FEB3100A61211 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		96688078295FBE6D00FECB04 /* EncodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeImage.swift; sourceTree = "<group>"; };
 		967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardBehaviour.swift; sourceTree = "<group>"; };
 		967EFA5229412A7A00787FF2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9681EB6A295BEAFD001C0BA1 /* OfficesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficesViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +76,14 @@
 				96C1D3F3294038FA00342DB3 /* ApiSophos.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		963DCD55295FEB0B00A61211 /* UIViewRepresentables */ = {
+			isa = PBXGroup;
+			children = (
+				963DCD56295FEB3100A61211 /* ImagePicker.swift */,
+			);
+			path = UIViewRepresentables;
 			sourceTree = "<group>";
 		};
 		969867D029528C1F00E1C1FE /* Services */ = {
@@ -122,6 +134,7 @@
 				967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */,
 				96B8770B29541C80008F4B07 /* AsyncButton.swift */,
 				9633AF85295B4ECF00279575 /* NavMenu.swift */,
+				96688078295FBE6D00FECB04 /* EncodeImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,6 +158,7 @@
 		96F0C37529388BA200B3597F /* Sophos App */ = {
 			isa = PBXGroup;
 			children = (
+				963DCD55295FEB0B00A61211 /* UIViewRepresentables */,
 				969867D029528C1F00E1C1FE /* Services */,
 				9611F630293B176000B34CEF /* Repositories */,
 				96DFDB9929388F5A000F62CB /* Extensions */,
@@ -239,6 +253,7 @@
 				9611F63A293B1DCA00B34CEF /* OfficesView.swift in Sources */,
 				969867D429528C5900E1C1FE /* APIService.swift in Sources */,
 				9611F632293B1D2B00B34CEF /* LoginView.swift in Sources */,
+				963DCD57295FEB3100A61211 /* ImagePicker.swift in Sources */,
 				96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */,
 				9611F636293B1DA400B34CEF /* SendDocumentsView.swift in Sources */,
 				96B8770C29541C80008F4B07 /* AsyncButton.swift in Sources */,
@@ -249,6 +264,7 @@
 				969867D229528C3800E1C1FE /* Authentication.swift in Sources */,
 				969867D62952B13900E1C1FE /* LoginViewModel.swift in Sources */,
 				96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */,
+				96688079295FBE6D00FECB04 /* EncodeImage.swift in Sources */,
 				96C1FAC12955724800771644 /* HomeView.swift in Sources */,
 				96940029293F467600B84C36 /* ColorSophos.swift in Sources */,
 				9611F638293B1DB600B34CEF /* SeeDocumentsView.swift in Sources */,

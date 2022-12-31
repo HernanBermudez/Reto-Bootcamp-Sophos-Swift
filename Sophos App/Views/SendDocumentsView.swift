@@ -12,14 +12,40 @@ struct SendDocumentsView: View {
     @EnvironmentObject var loginVM : LoginViewModel
     @EnvironmentObject var officesVM : OfficesViewModel
     let idTypes = ["Cédula de Ciudadanía", "Tarjeta de Identidad", "Pasaporte", "Cédula de Extranjería"]
+    let imageSelection = ["Cargar Foto", "Tomar Foto"]
     @State private var selection : String = "Cédula de Ciudadanía"
     @State var someText: String = "hOLA"
     var body: some View {
         NavigationSplitView {
-            Text("Hello, ready to send your docs?")
-            
+            Menu {
+                Button {
+                    sendDocumentsVM.source = .library
+                    sendDocumentsVM.showPicker = true
+                } label: {
+                    Text("Cargar foto")
+                }
+                Button {
+                    sendDocumentsVM.source = .camera
+                    sendDocumentsVM.showPicker = true
+                } label: {
+                    Text("Tomar foto")
+                }
+            } label: {
+                if let image = sendDocumentsVM.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .cornerRadius(25)
+                        .frame(maxWidth: 150, maxHeight: 120)
+                        .padding(.horizontal)
+                } else {
+                    Image(systemName: "person.crop.circle.fill.badge.plus")
+                        .resizable()
+                        .opacity(0.6)
+                        .frame(maxWidth: 150, maxHeight: 120)
+                        .padding(.horizontal)
+                }
+            }
             Form {
-                TextField("Acá va la imagen", text: $sendDocumentsVM.datosNuevoDocumento.Adjunto)
                 Picker("Tipo de Identificación", selection: $sendDocumentsVM.datosNuevoDocumento.TipoId){
                     ForEach(idTypes, id: \.self){
                         Text($0)
@@ -49,14 +75,7 @@ struct SendDocumentsView: View {
                 } label: {
                     Text(sendDocumentsVM.complete || sendDocumentsVM.inProgress ? "" : "Enviar")
                 }
-
-
             }
-
-            HStack{
-                Image(systemName: "person.circle.fill").padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 0))
-                TextField("Email", text: $someText)
-            }.background(RoundedRectangleInput()).padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))//.offset(y:-60)
         } detail: {
             
         }.toolbar(content: {
@@ -64,6 +83,10 @@ struct SendDocumentsView: View {
         })
         .navigationTitle("Envío de Documentación")
         .environmentObject(officesVM)
+        .environmentObject(sendDocumentsVM)
+        .sheet(isPresented: $sendDocumentsVM.showPicker) {
+            ImagePicker(sourceType: sendDocumentsVM.source == .library ? .photoLibrary : .camera, selectedImage: $sendDocumentsVM.image )
+        }
     }
 }
 

@@ -46,3 +46,9 @@ struct SendDocumentModel: Codable {
     var TipoAdjunto : String = ""
     var Adjunto : String = ""
 }
+
+enum PhotoPicker {
+    enum Source: String {
+        case library, camera
+    }
+}
