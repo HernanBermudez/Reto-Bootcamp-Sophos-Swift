@@ -10,14 +10,21 @@ import SwiftUI
 struct NavMenu: View {
     @EnvironmentObject var loginVM : LoginViewModel
     @EnvironmentObject var officesVM : OfficesViewModel
-    let menuOptions = ["Home", "Send", "See", "Offices", "Logout"]
+    let menuOptions = ["Home", "Send", "See", "Offices"]
     var body: some View {
         Menu{
             NavigationLink("Menú Principal", value: menuOptions[0])
             NavigationLink("Enviar Documento", value: menuOptions[1])
             NavigationLink("Ver Documento", value: menuOptions[2])
             NavigationLink("Ver Oficinas", value: menuOptions[3])
-            NavigationLink("Logout", value: menuOptions[4])
+            Button {
+                Task {
+                    await loginVM.signOut()
+                    await officesVM.resetOffices()
+                }
+            } label: {
+                Text("Logout")
+            }
         } label: {
             Image(systemName: "list.bullet")
                 .foregroundColor(colorSophos)
@@ -35,12 +42,6 @@ struct NavMenu: View {
             }
             if value == "Offices" {
                 OfficesView()
-            }
-            if value == "Logout" {
-                LoginView().task {
-                    await loginVM.signOut()
-                    await officesVM.resetOffices()
-                }
             }
         }.environmentObject(loginVM)
     }

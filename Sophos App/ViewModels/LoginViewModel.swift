@@ -50,9 +50,9 @@ class LoginViewModel: ObservableObject {
     func signOut() async {
         do{
             try await Task.sleep(nanoseconds: 1_000_000_000)
+            loggingIn = NavigationPath()
             isLoggedIn.toggle()
             isPresented.toggle()
-            loggingIn.append(false)
             inProgress.toggle()
             complete.toggle()
         }catch{
