@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NavMenu: View {
     @EnvironmentObject var loginVM : LoginViewModel
+    @EnvironmentObject var officesVM : OfficesViewModel
     let menuOptions = ["Home", "Send", "See", "Offices", "Logout"]
     var body: some View {
         Menu{
@@ -16,11 +17,7 @@ struct NavMenu: View {
             NavigationLink("Enviar Documento", value: menuOptions[1])
             NavigationLink("Ver Documento", value: menuOptions[2])
             NavigationLink("Ver Oficinas", value: menuOptions[3])
-            NavigationLink("Logout", value: menuOptions[4]).onTapGesture {
-                loginVM.isLoggedIn.toggle()
-                loginVM.isPresented.toggle()
-                loginVM.loggingIn.append(false)
-            }
+            NavigationLink("Logout", value: menuOptions[4])
         } label: {
             Image(systemName: "list.bullet")
                 .foregroundColor(colorSophos)
@@ -40,7 +37,10 @@ struct NavMenu: View {
                 OfficesView()
             }
             if value == "Logout" {
-                LoginView()
+                LoginView().task {
+                    await loginVM.signOut()
+                    await officesVM.resetOffices()
+                }
             }
         }.environmentObject(loginVM)
     }
