@@ -12,6 +12,9 @@ struct Sophos_AppApp: App {
     var body: some Scene {
         WindowGroup {
             LoginView()
+                .onAppear{
+                    UserDefaults.standard.setValue(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+                }
         }
     }
 }

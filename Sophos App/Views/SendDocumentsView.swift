@@ -20,13 +20,13 @@ struct SendDocumentsView: View {
             Menu {
                 Button {
                     sendDocumentsVM.source = .library
-                    sendDocumentsVM.showPicker = true
+                    sendDocumentsVM.showPhotoPicker()
                 } label: {
                     Text("Cargar foto")
                 }
                 Button {
                     sendDocumentsVM.source = .camera
-                    sendDocumentsVM.showPicker = true
+                    sendDocumentsVM.showPhotoPicker()
                 } label: {
                     Text("Tomar foto")
                 }
@@ -86,7 +86,13 @@ struct SendDocumentsView: View {
         .environmentObject(sendDocumentsVM)
         .sheet(isPresented: $sendDocumentsVM.showPicker) {
             ImagePicker(sourceType: sendDocumentsVM.source == .library ? .photoLibrary : .camera, selectedImage: $sendDocumentsVM.image )
+                .ignoresSafeArea()
         }
+        .alert("Error", isPresented: $sendDocumentsVM.showCameraAlert, presenting: sendDocumentsVM.cameraError, actions: { cameraError in
+            cameraError.button
+        }, message: { cameraError in
+            Text(cameraError.message)
+        })
     }
 }
 

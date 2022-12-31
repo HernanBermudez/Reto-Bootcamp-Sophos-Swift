@@ -14,6 +14,20 @@ class SendDocumentsViewModel: ObservableObject {
     @Published var showPicker = false
     @Published var selectionImage : String = "Cargar Foto"
     @Published var source : PhotoPicker.Source = .library
+    @Published var showCameraAlert : Bool = false
+    @Published var cameraError : PhotoPicker.CameraErrorType?
     @Published var complete : Bool = false
     @Published var inProgress: Bool = false
+    
+    func showPhotoPicker() {
+        do {
+            if source == .camera {
+                try PhotoPicker.checkPermissions()
+            }
+            showPicker = true
+        } catch {
+            showCameraAlert = true
+            cameraError = PhotoPicker.CameraErrorType(error: error as! PhotoPicker.PhotoPickerError)
+        }
+    }
 }

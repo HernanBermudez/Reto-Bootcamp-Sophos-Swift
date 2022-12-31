@@ -7,6 +7,8 @@
 
 import Foundation
 import MapKit
+import AVFoundation
+import SwiftUI
 
 struct UserModel : Decodable {
     var id : String = ""
@@ -50,5 +52,44 @@ struct SendDocumentModel: Codable {
 enum PhotoPicker {
     enum Source: String {
         case library, camera
+    }
+    enum PhotoPickerError : Error, LocalizedError {
+        case unavailable
+        case restricted
+        case denied
+        
+        var errorDescription: String? {
+            switch self {
+            case .unavailable:
+                return NSLocalizedString("There is no camera available on this device", comment: "")
+            case .restricted:
+                return NSLocalizedString("You are not allowed to access media capture devices", comment: "")
+            case.denied:
+                return NSLocalizedString("You have explicitly denied permission for media capture. Please open permissions/Privacy/Camera and grant access for this application", comment: "")
+            }
+        }
+    }
+    static func checkPermissions()throws {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let authStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+            switch authStatus {
+            case.denied:
+                throw PhotoPickerError.denied
+            case.restricted:
+                throw PhotoPickerError.restricted
+            default:
+                break
+            }
+        } else {
+            throw PhotoPickerError.unavailable
+        }
+    }
+    
+    struct CameraErrorType {
+        let error : PhotoPicker.PhotoPickerError
+        var message : String {
+            error.localizedDescription
+        }
+        let button = Button("OK", role: .cancel){}
     }
 }
