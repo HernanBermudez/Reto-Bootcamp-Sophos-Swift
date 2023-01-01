@@ -49,6 +49,16 @@ struct SendDocumentModel: Codable {
     var Adjunto : String = ""
 }
 
+struct IdFormPicker: Identifiable {
+    let id = UUID()
+    var idTypes : Array<String> = ["Cédula de Ciudadanía", "Tarjeta de Identidad", "Pasaporte", "Cédula de Extranjería"]
+}
+
+struct CitiesFormPicker: Identifiable {
+    let id = UUID()
+    var cities : Array<String> = []
+}
+
 enum PhotoPicker {
     enum Source: String {
         case library, camera
