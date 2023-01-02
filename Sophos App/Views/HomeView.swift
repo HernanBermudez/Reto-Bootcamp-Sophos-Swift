@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
 
     @EnvironmentObject var loginVM : LoginViewModel
-    @EnvironmentObject var officesVM : OfficesViewModel
+    //@EnvironmentObject var officesVM : OfficesViewModel
     let navOptions = [0, 1, 2]
 
     var body: some View {
@@ -139,6 +139,6 @@ struct HomeView: View {
         })
         .navigationBarBackButtonHidden(true)
         .environmentObject(loginVM)
-        .environmentObject(officesVM)
+        //.environmentObject(officesVM)
     }
 }

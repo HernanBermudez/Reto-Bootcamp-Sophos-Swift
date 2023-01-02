@@ -11,15 +11,18 @@ struct SendDocumentsView: View {
     @ObservedObject var sendDocumentsVM  = SendDocumentsViewModel()
     @EnvironmentObject var loginVM : LoginViewModel
     @EnvironmentObject var officesVM : OfficesViewModel
-    let idTypes = ["Cédula de Ciudadanía", "Tarjeta de Identidad", "Pasaporte", "Cédula de Extranjería"]
+    @State var complete: Bool = false
+    @State var inProgress: Bool = false
     let imageSelection = ["Cargar Foto", "Tomar Foto"]
-    @State var selection : String = "Cédula de Ciudadanía"
-    
-    init() {
-        self._selection = State(initialValue: idTypes.first ?? "")
+    var idFormPicker : IdFormPicker = IdFormPicker()
+
+    init(){
+        self.idFormPicker.idTypes = ["Cédula de Ciudadanía", "Tarjeta de Identidad", "Pasaporte", "Cédula de Extranjería"]
     }
+    
     var body: some View {
         NavigationSplitView {
+            Spacer()
             Menu {
                 Button {
                     sendDocumentsVM.source = .library
@@ -34,7 +37,7 @@ struct SendDocumentsView: View {
                     Text("Tomar foto")
                 }
             } label: {
-                if let image = sendDocumentsVM.image {
+                if let image = sendDocumentsVM.imageView {
                     Image(uiImage: image)
                         .resizable()
                         .cornerRadius(25)
@@ -50,8 +53,8 @@ struct SendDocumentsView: View {
             }
             Form {
                 Picker("Tipo de Identificación", selection: $sendDocumentsVM.datosNuevoDocumento.TipoId){
-                    ForEach(idTypes, id: \.self){
-                        Text($0)
+                    ForEach(idFormPicker.idTypes, id: \.self){ id in
+                        Text(id).tag(id as String)
                     }
                 }.pickerStyle(.menu)
                 TextField("Número de Documento", text: $sendDocumentsVM.datosNuevoDocumento.Identificacion)
@@ -63,32 +66,28 @@ struct SendDocumentsView: View {
                         Text($0)
                     }
                 }.pickerStyle(.menu)
-                Button {
-                    
-                } label: {
-                    Text("Documento")
-                }
-                AsyncButton(isComplete: sendDocumentsVM.complete) {
-                    sendDocumentsVM.inProgress.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation {
-                            sendDocumentsVM.complete = true
-                        }
-                    }
-                } label: {
-                    Text(sendDocumentsVM.complete || sendDocumentsVM.inProgress ? "" : "Enviar")
-                }
             }
+            AsyncButtonOriginal(isComplete: complete, action: {
+                sendDocumentsVM.encodeImage(imageFunc: sendDocumentsVM.imageView)
+                sendDocumentsVM.postNewDocument(datosNuevoDocumento: sendDocumentsVM.datosNuevoDocumento)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation {complete = true}
+                }
+            })
+            {
+                Text(complete || inProgress ? "" : "Submit")
+            }
+            
+            Spacer()
+
         } detail: {
             
         }.toolbar(content: {
             NavMenu()
         })
         .navigationTitle("Envío de Documentación")
-        .environmentObject(officesVM)
-        .environmentObject(sendDocumentsVM)
         .sheet(isPresented: $sendDocumentsVM.showPicker) {
-            ImagePicker(sourceType: sendDocumentsVM.source == .library ? .photoLibrary : .camera, selectedImage: $sendDocumentsVM.image )
+            ImagePicker(sourceType: sendDocumentsVM.source == .library ? .photoLibrary : .camera, selectedImage: $sendDocumentsVM.imageView )
                 .ignoresSafeArea()
         }
         .alert("Error", isPresented: $sendDocumentsVM.showCameraAlert, presenting: sendDocumentsVM.cameraError, actions: { cameraError in
@@ -98,9 +97,3 @@ struct SendDocumentsView: View {
         })
     }
 }
-
-//struct SendDocumentsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SendDocumentsView()
-//    }
-//}

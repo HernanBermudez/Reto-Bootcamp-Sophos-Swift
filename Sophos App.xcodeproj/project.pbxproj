@@ -24,6 +24,7 @@
 		969867D429528C5900E1C1FE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969867D329528C5900E1C1FE /* APIService.swift */; };
 		969867D62952B13900E1C1FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969867D52952B13900E1C1FE /* LoginViewModel.swift */; };
 		96B8770C29541C80008F4B07 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8770B29541C80008F4B07 /* AsyncButton.swift */; };
+		96BAA4602960EE89002393F2 /* AsyncButtonOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */; };
 		96C1D3F4294038FA00342DB3 /* ApiSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1D3F3294038FA00342DB3 /* ApiSophos.swift */; };
 		96C1FAC12955724800771644 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1FAC02955724800771644 /* HomeView.swift */; };
 		96F0C37729388BA200B3597F /* Sophos_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0C37629388BA200B3597F /* Sophos_AppApp.swift */; };
@@ -50,6 +51,7 @@
 		969867D329528C5900E1C1FE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		969867D52952B13900E1C1FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		96B8770B29541C80008F4B07 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
+		96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButtonOriginal.swift; sourceTree = "<group>"; };
 		96C1D3F3294038FA00342DB3 /* ApiSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSophos.swift; sourceTree = "<group>"; };
 		96C1FAC02955724800771644 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		96F0C37329388BA200B3597F /* Sophos App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sophos App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 				96B8770B29541C80008F4B07 /* AsyncButton.swift */,
 				9633AF85295B4ECF00279575 /* NavMenu.swift */,
 				96688078295FBE6D00FECB04 /* EncodeImage.swift */,
+				96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				9681EB6B295BEAFD001C0BA1 /* OfficesViewModel.swift in Sources */,
 				967EFA5329412A7A00787FF2 /* Model.swift in Sources */,
 				96F280C1295E982A009A482D /* SendDocumentsViewModel.swift in Sources */,
+				96BAA4602960EE89002393F2 /* AsyncButtonOriginal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,11 +39,11 @@ struct OfficePin: Identifiable {
 }
 
 struct SendDocumentModel: Codable {
-    var TipoId : String = ""
+    var TipoId : String = "Cédula de Ciudadanía"
     var Identificacion : String = ""
     var Nombre : String = ""
     var Apellido : String = ""
-    var Ciudad : String = ""
+    var Ciudad : String = "Medellín"
     var Correo : String = ""
     var TipoAdjunto : String = ""
     var Adjunto : String = ""
@@ -51,12 +51,7 @@ struct SendDocumentModel: Codable {
 
 struct IdFormPicker: Identifiable {
     let id = UUID()
-    var idTypes : Array<String> = ["Cédula de Ciudadanía", "Tarjeta de Identidad", "Pasaporte", "Cédula de Extranjería"]
-}
-
-struct CitiesFormPicker: Identifiable {
-    let id = UUID()
-    var cities : Array<String> = []
+    var idTypes : Array<String> = []
 }
 
 enum PhotoPicker {

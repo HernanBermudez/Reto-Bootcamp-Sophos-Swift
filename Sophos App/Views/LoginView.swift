@@ -46,14 +46,16 @@ struct LoginView: View {
                         loginVM.loginErrors = errorMessage
                     } else {
                         loginVM.loginErrors = ""
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                            withAnimation {loginVM.isLoggedIn = true}
+                        }
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
-                            withAnimation { loginVM.complete = loginVM.isLoggedIn }
                             await officesVM.fetchOffices()
                         }
                     }
                 }) {
-                    NavigationLink(loginVM.complete || loginVM.inProgress ? "" : "Ingresar", value: true)
+                    NavigationLink(loginVM.isLoggedIn || loginVM.inProgress ? "" : "Ingresar", value: true)
                 }
                 
                 HStack{
