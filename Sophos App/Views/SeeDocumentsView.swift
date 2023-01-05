@@ -20,10 +20,8 @@ struct SeeDocumentsView: View {
                     GroupBox{
                         Text(doc.Nombre + doc.Apellido)
                         Text(doc.TipoAdjunto)
+                        Text(doc.Fecha)
                     }
-                }
-                ForEach(seeDocumentsVM.datesArray.dates, id: \.self){date in
-                    Text(date)
                 }
             }
         } detail: {

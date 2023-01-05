@@ -12,8 +12,6 @@ class SeeDocumentsViewModel : ObservableObject {
     @Published var fetchedDocuments = FetchDocumentsModel(Items: [FetchDocumentsItem()])
     @Published var documentList : SeeDocumentsList = SeeDocumentsList()
     @Published var formatterDate = DateFormatter()
-    @Published var datesArray : DateArray = DateArray()
-    //@Published var fetchedDocuments = OfficesItems(Items: [Offices()])
     
     func decodeImage(base64 : String?){
         let rebornImg = base64?.imageFromBase64
@@ -28,7 +26,7 @@ class SeeDocumentsViewModel : ObservableObject {
         let ix3 = dateSplitted.index(ix, offsetBy: dateSplitted.count - 1) // the index of last character
 
         dateSplitted.removeSubrange(ix2...ix3)
-        var dateFormatted = dateSplitted.split(separator: "-")
+        let dateFormatted = dateSplitted.split(separator: "-")
         let finalDate = String(dateFormatted[2] + "-" + dateFormatted[1] + "-" + dateFormatted[0])
         return finalDate
     }
@@ -44,8 +42,9 @@ class SeeDocumentsViewModel : ObservableObject {
                 fetchedDocuments = decodedResponse
                 documentList.documents = decodedResponse.Items
             }
-            for dates in documentList.documents {
-                datesArray.dates.append(dateFormatter(date: dates.Fecha))
+            for (index, documents) in documentList.documents.enumerated() {
+                //datesArray.dates.append(dateFormatter(date: dates.Fecha))
+                documentList.documents[index].Fecha = dateFormatter(date: documents.Fecha)
             }
         } catch {
             print("Failed retrieving documents")
