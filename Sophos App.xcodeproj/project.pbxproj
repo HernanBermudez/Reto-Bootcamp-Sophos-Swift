@@ -25,6 +25,7 @@
 		969867D429528C5900E1C1FE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969867D329528C5900E1C1FE /* APIService.swift */; };
 		969867D62952B13900E1C1FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969867D52952B13900E1C1FE /* LoginViewModel.swift */; };
 		96B8770C29541C80008F4B07 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8770B29541C80008F4B07 /* AsyncButton.swift */; };
+		96B8C03829673F50007D3A7A /* SeeDocumentsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B8C03729673F50007D3A7A /* SeeDocumentsImageView.swift */; };
 		96BAA4602960EE89002393F2 /* AsyncButtonOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */; };
 		96C1D3F4294038FA00342DB3 /* ApiSophos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1D3F3294038FA00342DB3 /* ApiSophos.swift */; };
 		96C1FAC12955724800771644 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C1FAC02955724800771644 /* HomeView.swift */; };
@@ -53,6 +54,7 @@
 		969867D329528C5900E1C1FE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		969867D52952B13900E1C1FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		96B8770B29541C80008F4B07 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
+		96B8C03729673F50007D3A7A /* SeeDocumentsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDocumentsImageView.swift; sourceTree = "<group>"; };
 		96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButtonOriginal.swift; sourceTree = "<group>"; };
 		96C1D3F3294038FA00342DB3 /* ApiSophos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiSophos.swift; sourceTree = "<group>"; };
 		96C1FAC02955724800771644 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				9611F637293B1DB600B34CEF /* SeeDocumentsView.swift */,
 				9611F639293B1DCA00B34CEF /* OfficesView.swift */,
 				96C1FAC02955724800771644 /* HomeView.swift */,
+				96B8C03729673F50007D3A7A /* SeeDocumentsImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				96C1D3F4294038FA00342DB3 /* ApiSophos.swift in Sources */,
 				967EFA51294129C100787FF2 /* UIKeyboardBehaviour.swift in Sources */,
 				9629E461295D401300CA3BF2 /* LocationManager.swift in Sources */,
+				96B8C03829673F50007D3A7A /* SeeDocumentsImageView.swift in Sources */,
 				9633AF86295B4ECF00279575 /* NavMenu.swift in Sources */,
 				969867D229528C3800E1C1FE /* Authentication.swift in Sources */,
 				969867D62952B13900E1C1FE /* LoginViewModel.swift in Sources */,
