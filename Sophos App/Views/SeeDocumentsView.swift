@@ -18,10 +18,12 @@ struct SeeDocumentsView: View {
             List {
                 ForEach(seeDocumentsVM.documentList.documents, id: \.self){ doc in
                     GroupBox{
-                        Text(doc.Nombre + doc.Apellido)
-                        Text(doc.TipoAdjunto)
-                        Text(doc.Fecha)
-                    }
+                        Button {
+                            
+                        } label: {
+                            Text(doc.Fecha + " - " + doc.TipoAdjunto + " " + doc.Nombre + " " + doc.Apellido).lineLimit(2)
+                        }
+                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
                 }
             }
         } detail: {
