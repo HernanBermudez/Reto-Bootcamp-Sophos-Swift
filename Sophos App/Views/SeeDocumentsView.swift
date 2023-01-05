@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SeeDocumentsView: View {
-    @ObservedObject var seeDocumentsVM = SeeDocumentsViewModel()
+    @EnvironmentObject var seeDocumentsVM : SeeDocumentsViewModel
     @EnvironmentObject var loginVM : LoginViewModel
+    @State private var showingSheet = false
  
     var body: some View {
         NavigationSplitView {
@@ -17,13 +18,19 @@ struct SeeDocumentsView: View {
             Spacer()
             List {
                 ForEach(seeDocumentsVM.documentList.documents, id: \.self){ doc in
-                    GroupBox{
-                        Button {
-                            
-                        } label: {
-                            Text(doc.Fecha + " - " + doc.TipoAdjunto + " " + doc.Nombre + " " + doc.Apellido).lineLimit(2)
+                    Button {
+                        showingSheet.toggle()
+                    } label: {
+                        GroupBox{
+                            Text(doc.Fecha + " - " + doc.TipoAdjunto)
+                            Text(doc.Nombre + " " + doc.Apellido)
                         }
-                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
+                    }
+                    .sheet(isPresented: $showingSheet){
+                        SeeDocumentsImageView()
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
+                        .foregroundColor(colorSophos)
                 }
             }
         } detail: {
@@ -31,12 +38,7 @@ struct SeeDocumentsView: View {
         }.toolbar(content: {
             NavMenu()
         })
-        .onAppear{
-            Task{
-                await seeDocumentsVM.fetchDocuments(email: loginVM.email)
-            }
-        }
-        .environmentObject(loginVM)
+        .environmentObject(seeDocumentsVM)
         .navigationTitle("Documentos")
 
         
