@@ -6,16 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SeeDocumentsViewModel : ObservableObject {
     @Published var selectedDocument : String = ""
     @Published var fetchedDocuments = FetchDocumentsModel(Items: [FetchDocumentsItem()])
+    @Published var fetchedDocumentDetails = FetchDocumentDetailModel(Items: [FetchDocumentDetailItem()])
     @Published var documentList : SeeDocumentsList = SeeDocumentsList()
     @Published var formatterDate = DateFormatter()
+    @Published var decodedImage : UIImage = UIImage(systemName: "doc")!
+    @Published var images : Array<UIImage> = [UIImage()]
     
-    func decodeImage(base64 : String?){
-        let rebornImg = base64?.imageFromBase64
-        //let rebornImg = base64?.imageFromBase64
+    func decodeImage(base64 : String?) -> UIImage{
+        let rebornImg = (base64?.imageFromBase64)!
+        return rebornImg
         
     }
     
@@ -51,5 +55,23 @@ class SeeDocumentsViewModel : ObservableObject {
         }
         //jsonString = String(data: encodedDocument, encoding: .utf8)!
         //print(jsonString)
+    }
+    
+    func fetchImageDocument (registro : String) async {
+        guard let url = URL(string: documentsUrl + "?idRegistro=" + registro) else {
+            print("Invalid URL")
+            return
+        }
+        do {
+            let (data,_) = try await URLSession.shared.data(from: url)
+            if let decodedResponse = try! JSONDecoder().decode(FetchDocumentDetailModel?.self, from: data){
+                fetchedDocumentDetails = decodedResponse
+            }
+            for documents in fetchedDocumentDetails.Items {
+                images.append(decodeImage(base64: documents.Adjunto))
+            }
+        } catch {
+            print("Failed retrieving documents")
+        }
     }
 }
