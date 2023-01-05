@@ -68,18 +68,18 @@ struct DateArray : Identifiable {
     var dates : Array<String> = []
 }
 
-struct DocumentDetailModel : Decodable {
-    var Items: Array<DocumentDetailModel>
+struct FetchDocumentDetailModel : Decodable {
+    var Items: Array<FetchDocumentDetailItem>
     var Count : Int = 0
     var ScannedCount : Int = 0
 }
 
-struct DocumentDetailItem : Decodable {
-    var TipoId : String = "Cédula de Ciudadanía"
+struct FetchDocumentDetailItem : Decodable {
+    var TipoId : String = ""
     var Identificacion : String = ""
     var Nombre : String = ""
     var Apellido : String = ""
-    var Ciudad : String = "Medellín"
+    var Ciudad : String = ""
     var Correo : String = ""
     var TipoAdjunto : String = ""
     var Adjunto : String = ""
