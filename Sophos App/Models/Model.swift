@@ -49,6 +49,48 @@ struct SendDocumentModel: Codable {
     var Adjunto : String = ""
 }
 
+struct FetchDocumentsModel : Decodable {
+    var Items: Array<FetchDocumentsItem>
+    var Count : Int = 0
+    var ScannedCount : Int = 0
+}
+
+struct FetchDocumentsItem : Decodable, Hashable {
+    var IdRegistro : String = ""
+    var Fecha : String = ""
+    var TipoAdjunto : String = ""
+    var Nombre : String = ""
+    var Apellido : String = ""
+}
+
+struct DateArray : Identifiable {
+    let id = UUID()
+    var dates : Array<String> = []
+}
+
+struct DocumentDetailModel : Decodable {
+    var Items: Array<DocumentDetailModel>
+    var Count : Int = 0
+    var ScannedCount : Int = 0
+}
+
+struct DocumentDetailItem : Decodable {
+    var TipoId : String = "Cédula de Ciudadanía"
+    var Identificacion : String = ""
+    var Nombre : String = ""
+    var Apellido : String = ""
+    var Ciudad : String = "Medellín"
+    var Correo : String = ""
+    var TipoAdjunto : String = ""
+    var Adjunto : String = ""
+    var IdRegistro : String = ""
+}
+
+struct SeeDocumentsList : Identifiable {
+    let id = UUID()
+    var documents : Array<FetchDocumentsItem> = []
+}
+
 struct IdFormPicker: Identifiable {
     let id = UUID()
     var idTypes : Array<String> = []
