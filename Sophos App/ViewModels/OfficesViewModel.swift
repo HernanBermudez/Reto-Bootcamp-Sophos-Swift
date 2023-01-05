@@ -36,7 +36,6 @@ class OfficesViewModel : ObservableObject {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            print(data)
             if let decodedResponse = try! JSONDecoder().decode(OfficesItems?.self, from: data){
                 offices = decodedResponse
                 for (index, office) in offices.Items.enumerated(){
@@ -46,7 +45,6 @@ class OfficesViewModel : ObservableObject {
                     officesCities.append(office.Ciudad)
                 }
                 officeToShow = MKCoordinateRegion(center: coordinates[3], span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-                print(officeToShow)
             }
         } catch {
             print("Could not find offices nearby")
