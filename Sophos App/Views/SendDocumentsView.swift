@@ -66,6 +66,7 @@ struct SendDocumentsView: View {
                         Text($0)
                     }
                 }.pickerStyle(.menu)
+                TextField("Descripción", text: $sendDocumentsVM.datosNuevoDocumento.TipoAdjunto)
             }
             AsyncButtonOriginal(isComplete: complete, action: {
                 sendDocumentsVM.encodeImage(imageFunc: sendDocumentsVM.imageView)

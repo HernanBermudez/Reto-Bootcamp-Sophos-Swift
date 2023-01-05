@@ -40,7 +40,7 @@ class SendDocumentsViewModel: ObservableObject {
     func encodeImage(imageFunc: UIImage?){
         imageBase64 = imageFunc?.base64
         datosNuevoDocumento.Adjunto = imageBase64 ?? "No se subio la imagen codificada"
-        datosNuevoDocumento.TipoAdjunto = "Imagen"
+        print(datosNuevoDocumento.Adjunto)
         //let rebornImg = base64?.imageFromBase64
         
     }
