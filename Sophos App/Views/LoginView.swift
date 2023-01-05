@@ -12,6 +12,7 @@ struct LoginView: View {
     // Variables for user inputs
     @ObservedObject var loginVM = LoginViewModel()
     @ObservedObject var officesVM = OfficesViewModel()
+    @ObservedObject var seeDocumentsVM = SeeDocumentsViewModel()
     @EnvironmentObject var authentication: Authentication
     
     var body: some View {
@@ -52,6 +53,7 @@ struct LoginView: View {
                         Task{
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             await officesVM.fetchOffices()
+                            await seeDocumentsVM.fetchDocuments(email: loginVM.email)
                         }
                     }
                 }) {
@@ -83,6 +85,7 @@ struct LoginView: View {
             
         }.environmentObject(loginVM)
             .environmentObject(officesVM)
+            .environmentObject(seeDocumentsVM)
             .navigationBarBackButtonHidden(true)
     }
 }
