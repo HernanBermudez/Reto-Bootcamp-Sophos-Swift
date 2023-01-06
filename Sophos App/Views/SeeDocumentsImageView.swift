@@ -13,6 +13,9 @@ struct SeeDocumentsImageView: View {
 
     var body: some View {
         VStack{
+            Image(uiImage: seeDocumentsVM.images[0]).frame(width: 300, height: 600, alignment: .center)
+                .padding(20)
+            Image(uiImage: seeDocumentsVM.images[1])
             Image(systemName: "person.circle.fill")
             Button("Press to dismiss") {
                 dismiss()
@@ -20,6 +23,6 @@ struct SeeDocumentsImageView: View {
             .font(.title)
             .padding()
             .background(.black)
-        }
+        }.environmentObject(seeDocumentsVM)
     }
 }

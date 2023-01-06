@@ -20,6 +20,9 @@ struct SeeDocumentsView: View {
                 ForEach(seeDocumentsVM.documentList.documents, id: \.self){ doc in
                     Button {
                         showingSheet.toggle()
+                        Task {
+                            await seeDocumentsVM.fetchImageDocument(registro: doc.IdRegistro)
+                        }
                     } label: {
                         GroupBox{
                             Text(doc.Fecha + " - " + doc.TipoAdjunto)
@@ -38,10 +41,12 @@ struct SeeDocumentsView: View {
         }.toolbar(content: {
             NavMenu()
         })
-        .environmentObject(seeDocumentsVM)
         .navigationTitle("Documentos")
-
-        
+        .onAppear{
+            Task{
+                await seeDocumentsVM.fetchImageDocument(registro: seeDocumentsVM.registerId)
+            }
+        }
     }
 }
 

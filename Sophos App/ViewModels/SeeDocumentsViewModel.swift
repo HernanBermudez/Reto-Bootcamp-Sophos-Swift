@@ -16,13 +16,20 @@ class SeeDocumentsViewModel : ObservableObject {
     @Published var formatterDate = DateFormatter()
     @Published var decodedImage : UIImage = UIImage(systemName: "doc")!
     @Published var images : Array<UIImage> = [UIImage()]
+    @Published var registers : Array<String> = [""]
+    @Published var registerId : String = ""
     
-    func decodeImage(base64 : String?) -> UIImage{
-        let rebornImg = (base64?.imageFromBase64)!
-        return rebornImg
-        
+    func decodeImage(base64 : String?){
+        let rebornImg = base64?.imageFromBase64
+        images.append(rebornImg ?? UIImage(systemName: "doc")!)
     }
     
+    func convertBase64StringToImage (imageBase64String:String) -> UIImage {
+        let imageData = Data(base64Encoded: imageBase64String)
+        let image = UIImage(data: imageData!)
+        return image!
+    }
+
     func dateFormatter(date : String) -> String {
         var dateSplitted = date
         let ix = dateSplitted.startIndex // the index of 1st character
@@ -47,12 +54,15 @@ class SeeDocumentsViewModel : ObservableObject {
                 documentList.documents = decodedResponse.Items
             }
             for (index, documents) in documentList.documents.enumerated() {
-                //datesArray.dates.append(dateFormatter(date: dates.Fecha))
                 documentList.documents[index].Fecha = dateFormatter(date: documents.Fecha)
+                registers.append(documents.IdRegistro)
             }
+            print(registers)
+            registerId = registers[2]
         } catch {
             print("Failed retrieving documents")
         }
+        //guard let registroUrl = URL(string: documentsUrl + "?idRegistro=" + )
         //jsonString = String(data: encodedDocument, encoding: .utf8)!
         //print(jsonString)
     }
@@ -62,13 +72,19 @@ class SeeDocumentsViewModel : ObservableObject {
             print("Invalid URL")
             return
         }
+        print(url)
         do {
             let (data,_) = try await URLSession.shared.data(from: url)
-            if let decodedResponse = try! JSONDecoder().decode(FetchDocumentDetailModel?.self, from: data){
+            if let decodedResponse = try JSONDecoder().decode(FetchDocumentDetailModel?.self, from: data){
                 fetchedDocumentDetails = decodedResponse
             }
             for documents in fetchedDocumentDetails.Items {
-                images.append(decodeImage(base64: documents.Adjunto))
+                if documents.Adjunto.count > 0 {
+                    //images.append(convertBase64StringToImage(imageBase64String: documents.Adjunto))
+                    decodeImage(base64: documents.Adjunto)
+                    print(documents.Adjunto)
+                }
+                print(images)
             }
         } catch {
             print("Failed retrieving documents")

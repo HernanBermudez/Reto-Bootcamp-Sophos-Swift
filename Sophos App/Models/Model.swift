@@ -75,15 +75,16 @@ struct FetchDocumentDetailModel : Decodable {
 }
 
 struct FetchDocumentDetailItem : Decodable {
-    var TipoId : String = ""
-    var Identificacion : String = ""
+    var Ciudad : String = ""
+    var Fecha : String = ""
+    var TipoAdjunto : String = ""
     var Nombre : String = ""
     var Apellido : String = ""
-    var Ciudad : String = ""
-    var Correo : String = ""
-    var TipoAdjunto : String = ""
-    var Adjunto : String = ""
+    var Identificacion : String = ""
     var IdRegistro : String = ""
+    var TipoId : String = ""
+    var Correo : String = ""
+    var Adjunto : String = ""
 }
 
 struct SeeDocumentsList : Identifiable {

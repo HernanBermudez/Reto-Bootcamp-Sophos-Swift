@@ -41,8 +41,6 @@ class SendDocumentsViewModel: ObservableObject {
         imageBase64 = imageFunc?.base64
         datosNuevoDocumento.Adjunto = imageBase64 ?? "No se subio la imagen codificada"
         print(datosNuevoDocumento.Adjunto)
-        //let rebornImg = base64?.imageFromBase64
-        
     }
     
     func postNewDocument(datosNuevoDocumento : SendDocumentModel) {
@@ -59,7 +57,6 @@ class SendDocumentsViewModel: ObservableObject {
             request.httpMethod = "POST"
             request.httpBody = encodedDocument
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            //request.addValue("application/json", forHTTPHeaderField: "Accept")
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 print(response!)
             }

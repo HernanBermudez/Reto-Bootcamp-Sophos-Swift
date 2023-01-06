@@ -11,6 +11,7 @@ struct SendDocumentsView: View {
     @ObservedObject var sendDocumentsVM  = SendDocumentsViewModel()
     @EnvironmentObject var loginVM : LoginViewModel
     @EnvironmentObject var officesVM : OfficesViewModel
+    @EnvironmentObject var seeDocumentsVM: SeeDocumentsViewModel
     @State var complete: Bool = false
     @State var inProgress: Bool = false
     let imageSelection = ["Cargar Foto", "Tomar Foto"]
@@ -73,6 +74,10 @@ struct SendDocumentsView: View {
                 sendDocumentsVM.postNewDocument(datosNuevoDocumento: sendDocumentsVM.datosNuevoDocumento)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     withAnimation {complete = true}
+                }
+                Task{
+                    await seeDocumentsVM.fetchDocuments(email: loginVM.email)
+                    
                 }
             })
             {
