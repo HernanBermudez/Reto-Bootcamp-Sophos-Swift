@@ -17,7 +17,7 @@ extension UIImage {
 
 extension String {
     var imageFromBase64: UIImage? {
-        guard let imageData = Data(base64Encoded: self) else {
+        guard let imageData = Data(base64Encoded: self, options: .ignoreUnknownCharacters) else {
             return nil
         }
         return UIImage(data: imageData)
