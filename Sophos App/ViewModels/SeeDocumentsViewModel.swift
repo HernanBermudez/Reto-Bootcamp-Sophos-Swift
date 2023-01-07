@@ -15,13 +15,13 @@ class SeeDocumentsViewModel : ObservableObject {
     @Published var documentList : SeeDocumentsList = SeeDocumentsList()
     @Published var formatterDate = DateFormatter()
     @Published var decodedImage : UIImage = UIImage(systemName: "doc")!
-    @Published var images : Array<UIImage> = [UIImage()]
+    @Published var images : UIImage = UIImage()
     @Published var registers : Array<String> = [""]
     @Published var registerId : String = ""
     
     func decodeImage(base64 : String?){
         let rebornImg = base64?.imageFromBase64
-        images.append(rebornImg ?? UIImage(systemName: "doc")!)
+        images = rebornImg ?? UIImage(systemName: "doc")!
     }
     
     func convertBase64StringToImage (imageBase64String:String) -> UIImage {
@@ -57,14 +57,11 @@ class SeeDocumentsViewModel : ObservableObject {
                 documentList.documents[index].Fecha = dateFormatter(date: documents.Fecha)
                 registers.append(documents.IdRegistro)
             }
-            print(registers)
-            registerId = registers[2]
+            //registers.removeFirst(1)
+            registerId = registers[3]
         } catch {
             print("Failed retrieving documents")
         }
-        //guard let registroUrl = URL(string: documentsUrl + "?idRegistro=" + )
-        //jsonString = String(data: encodedDocument, encoding: .utf8)!
-        //print(jsonString)
     }
     
     func fetchImageDocument (registro : String) async {
@@ -78,14 +75,7 @@ class SeeDocumentsViewModel : ObservableObject {
             if let decodedResponse = try JSONDecoder().decode(FetchDocumentDetailModel?.self, from: data){
                 fetchedDocumentDetails = decodedResponse
             }
-            for documents in fetchedDocumentDetails.Items {
-                if documents.Adjunto.count > 0 {
-                    //images.append(convertBase64StringToImage(imageBase64String: documents.Adjunto))
-                    decodeImage(base64: documents.Adjunto)
-                    print(documents.Adjunto)
-                }
-                print(images)
-            }
+            decodeImage(base64: String(fetchedDocumentDetails.Items[0].Adjunto))
         } catch {
             print("Failed retrieving documents")
         }
