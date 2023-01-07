@@ -15,6 +15,7 @@
 		9629E461295D401300CA3BF2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9629E460295D401300CA3BF2 /* LocationManager.swift */; };
 		9633AF86295B4ECF00279575 /* NavMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9633AF85295B4ECF00279575 /* NavMenu.swift */; };
 		963DCD57295FEB3100A61211 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DCD56295FEB3100A61211 /* ImagePicker.swift */; };
+		965C5A2A29690B6D00D7BCD6 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965C5A2929690B6D00D7BCD6 /* PhotoDetailView.swift */; };
 		96688079295FBE6D00FECB04 /* EncodeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96688078295FBE6D00FECB04 /* EncodeImage.swift */; };
 		967EFA51294129C100787FF2 /* UIKeyboardBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */; };
 		967EFA5329412A7A00787FF2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967EFA5229412A7A00787FF2 /* Model.swift */; };
@@ -44,6 +45,7 @@
 		9629E460295D401300CA3BF2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9633AF85295B4ECF00279575 /* NavMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavMenu.swift; sourceTree = "<group>"; };
 		963DCD56295FEB3100A61211 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		965C5A2929690B6D00D7BCD6 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 		96688078295FBE6D00FECB04 /* EncodeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeImage.swift; sourceTree = "<group>"; };
 		967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKeyboardBehaviour.swift; sourceTree = "<group>"; };
 		967EFA5229412A7A00787FF2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				963DCD56295FEB3100A61211 /* ImagePicker.swift */,
+				965C5A2929690B6D00D7BCD6 /* PhotoDetailView.swift */,
 			);
 			path = UIViewRepresentables;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				9611F63A293B1DCA00B34CEF /* OfficesView.swift in Sources */,
 				969867D429528C5900E1C1FE /* APIService.swift in Sources */,
 				9603487629660835005C0D13 /* SeeDocumentsViewModel.swift in Sources */,
+				965C5A2A29690B6D00D7BCD6 /* PhotoDetailView.swift in Sources */,
 				9611F632293B1D2B00B34CEF /* LoginView.swift in Sources */,
 				963DCD57295FEB3100A61211 /* ImagePicker.swift in Sources */,
 				96940023293F0C8D00B84C36 /* RoundedRectangleInput.swift in Sources */,
