@@ -54,6 +54,7 @@ struct LoginView: View {
                             await loginVM.logIn(email: loginVM.email, password: loginVM.password)
                             await officesVM.fetchOffices()
                             await seeDocumentsVM.fetchDocuments(email: loginVM.email)
+                            await seeDocumentsVM.fetchImageDocument(registro: seeDocumentsVM.registerId)
                         }
                     }
                 }) {

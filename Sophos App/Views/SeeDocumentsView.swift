@@ -42,11 +42,6 @@ struct SeeDocumentsView: View {
             NavMenu()
         })
         .navigationTitle("Documentos")
-        .onAppear{
-            Task{
-                await seeDocumentsVM.fetchImageDocument(registro: seeDocumentsVM.registerId)
-            }
-        }
     }
 }
 
