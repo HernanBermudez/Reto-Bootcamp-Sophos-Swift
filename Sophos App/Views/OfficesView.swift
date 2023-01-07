@@ -17,10 +17,13 @@ struct OfficesView: View {
     var body: some View {
         NavigationSplitView {
             ZStack{
-                Map(coordinateRegion: $officesVM.officeToShow, showsUserLocation: true, annotationItems: officesVM.annotations){
-                    MapMarker(coordinate: $0.coordinate)
-                }
-                            .ignoresSafeArea()
+                Map(coordinateRegion: $officesVM.officeToShow, showsUserLocation: true, annotationItems: officesVM.annotations, annotationContent: { office in
+                    //MapMarker(coordinate: $0.coordinate)
+                    MapAnnotation(coordinate: office.coordinate, content: {
+                        Image(systemName: "mappin.circle.fill").foregroundColor(.red)
+                        Text(office.name)
+                    })
+                }).ignoresSafeArea()
                 
                 VStack {
                     if let location = locationManager.location {
