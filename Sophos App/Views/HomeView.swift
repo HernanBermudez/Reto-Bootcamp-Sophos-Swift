@@ -45,18 +45,20 @@ struct HomeView: View {
                                 .padding(20)
                         }
                     }
-                    .frame(width: 100.0, height: 50.0, alignment: .trailing)
+                    .frame(width: 110.0, height: 50.0, alignment: .center)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Color.pink, lineWidth: 4)
                     )
+                    .padding(EdgeInsets(top: 0, leading: 150, bottom: 0, trailing: 0))
 
-                }.padding(20.0)
-                    .overlay(
+                }.overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.pink, lineWidth: 4)
-                                .frame(width: 320.0, height: 150.0, alignment: .center)
+                                .frame(width: 320.0, height: 130.0, alignment: .trailing)
                     )
+                    .foregroundColor(Color.pink)
+                    .bold()
                 
                 Spacer()
                 
@@ -72,17 +74,20 @@ struct HomeView: View {
                             Text("Ingresar")
                                 .padding(20)
                         }
-                    }.overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.indigo, lineWidth: 4)
-                    )
-
-                }.padding(20.0)
-                    .overlay(
+                    }.frame(width: 110.0, height: 50.0, alignment: .center)
+                        .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.indigo, lineWidth: 4)
                         )
-                    .frame(width: .infinity)
+                        .padding(EdgeInsets(top: 0, leading: 150, bottom: 0, trailing: 0))
+
+                }.overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.indigo, lineWidth: 4)
+                            .frame(width: 320.0, height: 130.0, alignment: .trailing)
+                        )
+                    .foregroundColor(Color.indigo)
+                    .bold()
 
                 Spacer()
                 
@@ -98,17 +103,20 @@ struct HomeView: View {
                             Text("Ingresar")
                                 .padding(20)
                         }
-                    }.overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(.green, lineWidth: 4)
-                    )
-
-                }.padding(20.0)
-                    .overlay(
+                    }.frame(width: 110.0, height: 50.0, alignment: .center)
+                        .overlay(
                             RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color.green, lineWidth: 4)
                         )
-                    .frame(width: .infinity)
+                        .padding(EdgeInsets(top: 0, leading: 150, bottom: 0, trailing: 0))
+
+                }.overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.green, lineWidth: 4)
+                            .frame(width: 320.0, height: 130.0, alignment: .bottomTrailing)
+                        )
+                    .foregroundColor(Color.green)
+                    .bold()
                 
                 Spacer()
 
@@ -138,5 +146,56 @@ struct HomeView: View {
         })
         .navigationBarBackButtonHidden(true)
         .environmentObject(loginVM)
+    }
+}
+
+
+struct MenuView: View {
+    @Binding var oneActive: Bool
+    @Binding var twoActive: Bool
+    
+    var body: some View {
+        Menu {
+            Button {
+                oneActive = true
+            } label: {
+                Text("Option One")
+            }
+        
+            Button {
+                twoActive = true
+            } label: {
+                Text("Option Two")
+            }
+    
+        } label: {
+            Image(systemName: "ellipsis")
+        }
+    }
+}
+
+struct ContentView: View {
+    @State private var oneActive: Bool = false
+    @State private var twoActive: Bool = false
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                NavigationLink(destination: Text("Option One View"), isActive: $oneActive) { EmptyView() }
+                NavigationLink(destination: Text("Option Two View"), isActive: $twoActive) { EmptyView() }
+                ScrollView {
+                    ForEach(0..<100, id: \.self) { index in
+                        Text("\(index)")
+                    }
+                }
+            }
+            .navigationTitle("TItle")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    MenuView(oneActive: $oneActive, twoActive: $twoActive)
+                }
+            }
+        }
     }
 }
