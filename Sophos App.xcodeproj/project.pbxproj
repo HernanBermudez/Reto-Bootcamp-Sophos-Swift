@@ -95,6 +95,18 @@
 			path = UIViewRepresentables;
 			sourceTree = "<group>";
 		};
+		965C5A2B296A4DC000D7BCD6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */,
+				96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */,
+				96940028293F467600B84C36 /* ColorSophos.swift */,
+				96B8770B29541C80008F4B07 /* AsyncButton.swift */,
+				9633AF85295B4ECF00279575 /* NavMenu.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		969867D029528C1F00E1C1FE /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +128,7 @@
 		96DFDB9629388F32000F62CB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				965C5A2B296A4DC000D7BCD6 /* Components */,
 				9611F631293B1D2B00B34CEF /* LoginView.swift */,
 				9611F635293B1DA400B34CEF /* SendDocumentsView.swift */,
 				9611F637293B1DB600B34CEF /* SeeDocumentsView.swift */,
@@ -140,13 +153,8 @@
 		96DFDB9929388F5A000F62CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				96940022293F0C8D00B84C36 /* RoundedRectangleInput.swift */,
-				96940028293F467600B84C36 /* ColorSophos.swift */,
 				967EFA50294129C100787FF2 /* UIKeyboardBehaviour.swift */,
-				96B8770B29541C80008F4B07 /* AsyncButton.swift */,
-				9633AF85295B4ECF00279575 /* NavMenu.swift */,
 				96688078295FBE6D00FECB04 /* EncodeImage.swift */,
-				96BAA45F2960EE89002393F2 /* AsyncButtonOriginal.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
