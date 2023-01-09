@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import LocalAuthentication
 
 @MainActor
 class LoginViewModel: ObservableObject {
@@ -20,6 +21,7 @@ class LoginViewModel: ObservableObject {
     @Published var isPresented: Bool = false
     @Published var complete: Bool = false
     @Published var languageSelector : Bool = false
+    @Published var isUnlocked : Bool = false
     
     func validView(email: String, password: String) -> String? {
       
@@ -38,7 +40,6 @@ class LoginViewModel: ObservableObject {
         if self.password.count < 8 {
                 return "Contraseña mínimo de 8 caracteres"
         }
-            // Do same like other validation as per needed
             return nil
         }
         
@@ -87,6 +88,56 @@ class LoginViewModel: ObservableObject {
             inProgress.toggle()
             loginErrors = "Usuario o contraseña incorrectos"
             print("Invalid data")
+        }
+    }
+    
+    func authenticate(email: String, password: String) async {
+        let context = LAContext()
+        var error: NSError?
+        
+        print("Iniciando sesion")
+        let userLoggingIn : String = "idUsuario=" + email.lowercased() + "&clave=" + password
+        
+        guard let url = URL(string: logInUrl + userLoggingIn) else {
+            print("Invalid URL")
+            return
+        }
+        print(url)
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            inProgress = true
+            if let decodedResponse = try JSONDecoder().decode(UserModel?.self, from: data){
+                user = decodedResponse
+                print(user.nombre)
+                UserDefaults.standard.set(email, forKey: "emailUser")
+            }
+        } catch {
+            inProgress.toggle()
+            loginErrors = "Usuario o contraseña incorrectos"
+            print("Invalid data")
+        }
+
+        // check whether biometric authentication is possible
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // it's possible, so go ahead and use it
+            let reason = "We need to unlock your data."
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                // authentication has now completed
+                if success {
+                    self.isUnlocked = true
+                    self.isLoggedIn = true
+                    self.isPresented = true
+                    self.loggingIn.append(true)
+                } else {
+                    print("Failed to authenticate")
+                }
+            }
+        } else {
+            inProgress.toggle()
+            loginErrors = "Biometrics unavailable"
+            print("Biometrics unavailable")
         }
     }
 }
