@@ -62,8 +62,6 @@ class SendDocumentsViewModel: ObservableObject {
             }
             task.resume()
         }
-        //jsonString = String(data: encodedDocument, encoding: .utf8)!
-        //print(jsonString)
     }
     
     func getDocuments () {

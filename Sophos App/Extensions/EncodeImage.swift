@@ -24,6 +24,6 @@ extension String {
     }
 }
 
-//let img = //get UIImage from wherever
+//let img = --> get UIImage from wherever
 //let base64 = img.base64
 //let rebornImg = base64?.imageFromBase64

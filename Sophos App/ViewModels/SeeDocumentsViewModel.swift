@@ -58,8 +58,7 @@ class SeeDocumentsViewModel : ObservableObject {
                 documentList.documents[index].Fecha = dateFormatter(date: documents.Fecha)
                 registers.append(documents.IdRegistro)
             }
-            //registers.removeFirst(1)
-            registerId = registers[3]
+            registerId = registers[3] // initial fetched image to initialize docs image variable
         } catch {
             print("Failed retrieving documents")
         }
