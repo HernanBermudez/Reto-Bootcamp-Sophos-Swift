@@ -9,17 +9,22 @@ import SwiftUI
 
 struct SeeDocumentsImageView: View {
     @EnvironmentObject var seeDocumentsVM : SeeDocumentsViewModel
+    @EnvironmentObject var loginVM : LoginViewModel
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack{
             PhotoDetailView(image: seeDocumentsVM.images)
-            Button("Press to dismiss") {
+            Button{
                 dismiss()
+            } label: {
+                Text(loginVM.languageSelector ? "Dismiss" : "Volver")
             }
             .font(.title)
-            .padding()
-            .background(.black)
+            .padding(20)
+            .background(colorSophos)
+            .foregroundColor(loginVM.languageSelector ? Color.black : Color.white)
+            .cornerRadius(20)
         }
     }
 }

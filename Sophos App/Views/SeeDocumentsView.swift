@@ -14,18 +14,17 @@ struct SeeDocumentsView: View {
  
     var body: some View {
         NavigationSplitView {
-            Text("Hello, check out your docs!")
-            Spacer()
             List {
                 ForEach(seeDocumentsVM.documentList.documents, id: \.self){ doc in
-                    Button {
-                        showingSheet.toggle()
-                        Task {
+                    Button{
+                        Task{
                             await seeDocumentsVM.fetchImageDocument(registro: doc.IdRegistro)
                         }
+                        showingSheet.toggle()
                     } label: {
                         GroupBox{
-                            Text(doc.Fecha + " - " + doc.TipoAdjunto)
+                            Text(doc.Fecha)
+                            Text(doc.TipoAdjunto)
                             Text(doc.Nombre + " " + doc.Apellido)
                         }
                     }
@@ -34,14 +33,27 @@ struct SeeDocumentsView: View {
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
                         .foregroundColor(colorSophos)
-                }
+                }.multilineTextAlignment(TextAlignment.center)
             }
         } detail: {
             
-        }.toolbar(content: {
+        }
+        .navigationDestination(for: String.self) { value in
+            switch value{
+            case "Send":
+                SendDocumentsView()
+            case "See":
+                SeeDocumentsView()
+            case "Offices":
+                OfficesView()
+            default:
+                HomeView()
+            }
+        }
+        .toolbar(content: {
             NavMenu()
         })
-        .navigationTitle("Documentos")
+        .navigationTitle(loginVM.languageSelector ? "Documents" : "Documentos")
     }
 }
 

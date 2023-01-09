@@ -29,13 +29,13 @@ struct SendDocumentsView: View {
                     sendDocumentsVM.source = .library
                     sendDocumentsVM.showPhotoPicker()
                 } label: {
-                    Text("Cargar foto")
+                    Text(loginVM.languageSelector ? "Upload photo" : "Cargar foto")
                 }
                 Button {
                     sendDocumentsVM.source = .camera
                     sendDocumentsVM.showPhotoPicker()
                 } label: {
-                    Text("Tomar foto")
+                    Text(loginVM.languageSelector ? "Take photo" : "Tomar foto")
                 }
             } label: {
                 if let image = sendDocumentsVM.imageView {
@@ -53,21 +53,21 @@ struct SendDocumentsView: View {
                 }
             }
             Form {
-                Picker("Tipo de Identificación", selection: $sendDocumentsVM.datosNuevoDocumento.TipoId){
+                Picker(loginVM.languageSelector ? "ID Type" : "Tipo de Identificación", selection: $sendDocumentsVM.datosNuevoDocumento.TipoId){
                     ForEach(idFormPicker.idTypes, id: \.self){ id in
                         Text(id).tag(id as String)
                     }
                 }.pickerStyle(.menu)
-                TextField("Número de Documento", text: $sendDocumentsVM.datosNuevoDocumento.Identificacion)
-                TextField("Nombres", text: $sendDocumentsVM.datosNuevoDocumento.Nombre)
-                TextField("Apellidos", text: $sendDocumentsVM.datosNuevoDocumento.Apellido)
+                TextField(loginVM.languageSelector ? "Document Number" : "Número de Documento", text: $sendDocumentsVM.datosNuevoDocumento.Identificacion)
+                TextField(loginVM.languageSelector ? "Name" : "Nombres", text: $sendDocumentsVM.datosNuevoDocumento.Nombre)
+                TextField(loginVM.languageSelector ? "Surname" : "Apellidos", text: $sendDocumentsVM.datosNuevoDocumento.Apellido)
                 TextField(loginVM.email, text: $sendDocumentsVM.datosNuevoDocumento.Correo)
-                Picker("Ciudad", selection: $sendDocumentsVM.datosNuevoDocumento.Ciudad){
+                Picker(loginVM.languageSelector ? "City" : "Ciudad", selection: $sendDocumentsVM.datosNuevoDocumento.Ciudad){
                     ForEach(officesVM.officesCities, id: \.self){
                         Text($0)
                     }
                 }.pickerStyle(.menu)
-                TextField("Descripción", text: $sendDocumentsVM.datosNuevoDocumento.TipoAdjunto)
+                TextField(loginVM.languageSelector ? "Description" : "Descripción", text: $sendDocumentsVM.datosNuevoDocumento.TipoAdjunto)
             }
             AsyncButtonOriginal(isComplete: complete, action: {
                 sendDocumentsVM.encodeImage(imageFunc: sendDocumentsVM.imageView)
@@ -88,10 +88,23 @@ struct SendDocumentsView: View {
 
         } detail: {
             
-        }.toolbar(content: {
+        }
+        .navigationDestination(for: String.self) { value in
+            switch value{
+            case "Send":
+                SendDocumentsView()
+            case "See":
+                SeeDocumentsView()
+            case "Offices":
+                OfficesView()
+            default:
+                HomeView()
+            }
+        }
+        .toolbar(content: {
             NavMenu()
         })
-        .navigationTitle("Envío de Documentación")
+        .navigationTitle(loginVM.languageSelector ? "Send Documentation" : "Envío de Documentación")
         .sheet(isPresented: $sendDocumentsVM.showPicker) {
             ImagePicker(sourceType: sendDocumentsVM.source == .library ? .photoLibrary : .camera, selectedImage: $sendDocumentsVM.imageView )
                 .ignoresSafeArea()

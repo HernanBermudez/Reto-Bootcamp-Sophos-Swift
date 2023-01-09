@@ -12,6 +12,7 @@ import CoreLocationUI
 struct OfficesView: View {
     
     @EnvironmentObject var officesVM : OfficesViewModel
+    @EnvironmentObject var loginVM : LoginViewModel
     @StateObject var locationManager = LocationManager()
     
     var body: some View {
@@ -45,13 +46,25 @@ struct OfficesView: View {
                     .foregroundColor(.white)
                 }
                 .padding()
+            }.navigationDestination(for: String.self) { value in
+                switch value{
+                case "Send":
+                    SendDocumentsView()
+                case "See":
+                    SeeDocumentsView()
+                case "Offices":
+                    OfficesView()
+                default:
+                    HomeView()
+                }
             }
         } detail: {
             
-        }.toolbar(content: {
+        }
+        .toolbar(content: {
             NavMenu()
         })
         .environmentObject(officesVM)
-        .navigationTitle("Oficinas")
+        .navigationTitle(loginVM.languageSelector ? "Offices" : "Oficinas")
     }
 }

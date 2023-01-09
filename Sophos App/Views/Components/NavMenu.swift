@@ -10,13 +10,18 @@ import SwiftUI
 struct NavMenu: View {
     @EnvironmentObject var loginVM : LoginViewModel
     @EnvironmentObject var officesVM : OfficesViewModel
-    let menuOptions = ["Home", "Send", "See", "Offices"]
+    let menuOptions = ["Send", "See", "Offices", "Idioma Inglés"]
     var body: some View {
         Menu{
-            NavigationLink("Menú Principal", value: menuOptions[0])
-            NavigationLink("Enviar Documento", value: menuOptions[1])
-            NavigationLink("Ver Documento", value: menuOptions[2])
-            NavigationLink("Ver Oficinas", value: menuOptions[3])
+            NavigationLink(loginVM.languageSelector ? "Send Document" : "Enviar Documento", value: menuOptions[0])
+            NavigationLink(loginVM.languageSelector ? "See Document" : "Ver Documento", value: menuOptions[1])
+            NavigationLink(loginVM.languageSelector ? "See Offices" : "Ver Oficinas", value: menuOptions[2])
+            Button {
+                loginVM.languageSelector.toggle()
+            } label: {
+                Text(loginVM.languageSelector ? "Spanish Language" : menuOptions[3])
+            }
+
             Button {
                 Task {
                     await loginVM.signOut()
@@ -31,8 +36,6 @@ struct NavMenu: View {
         }
         .navigationDestination(for: String.self) { value in
             switch value{
-            case "Home":
-                HomeView()
             case "Send":
                 SendDocumentsView()
             case "See":
