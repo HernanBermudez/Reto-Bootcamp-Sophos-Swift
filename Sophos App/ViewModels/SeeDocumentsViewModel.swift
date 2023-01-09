@@ -8,20 +8,21 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class SeeDocumentsViewModel : ObservableObject {
     @Published var selectedDocument : String = ""
     @Published var fetchedDocuments = FetchDocumentsModel(Items: [FetchDocumentsItem()])
     @Published var fetchedDocumentDetails = FetchDocumentDetailModel(Items: [FetchDocumentDetailItem()])
     @Published var documentList : SeeDocumentsList = SeeDocumentsList()
     @Published var formatterDate = DateFormatter()
-    @Published var decodedImage : UIImage = UIImage(systemName: "doc")!
+    @Published var decodedImage : UIImage = UIImage(systemName: "doc.richtext")!
     @Published var images : UIImage = UIImage()
     @Published var registers : Array<String> = [""]
     @Published var registerId : String = ""
     
     func decodeImage(base64 : String?){
         let rebornImg = base64?.imageFromBase64
-        images = rebornImg ?? UIImage(systemName: "doc")!
+        images = rebornImg ?? UIImage(systemName: "doc.richtext")!
     }
     
     func convertBase64StringToImage (imageBase64String:String) -> UIImage {
