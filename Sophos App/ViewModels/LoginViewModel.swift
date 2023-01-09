@@ -12,14 +12,14 @@ import LocalAuthentication
 @MainActor
 class LoginViewModel: ObservableObject {
     @Published var email: String = UserDefaults.standard.string(forKey: "emailUser") ?? ""
-    @Published var password: String = "0S9Hh6WA3m4i"
+    @Published var password: String = UserDefaults.standard.string(forKey: "passwordUser") ?? "" // "0S9Hh6WA3m4i"
     @Published var loginErrors: String = ""
     @Published var isLoggedIn: Bool = false
     @Published var inProgress: Bool = false
     @Published var loggingIn = NavigationPath()
     @Published var user = UserModel()
     @Published var isPresented: Bool = false
-    @Published var complete: Bool = false
+    @Published var isComplete: Bool = false
     @Published var languageSelector : Bool = false
     @Published var isUnlocked : Bool = false
     
@@ -56,7 +56,7 @@ class LoginViewModel: ObservableObject {
             isLoggedIn.toggle()
             isPresented.toggle()
             inProgress.toggle()
-            complete.toggle()
+            isComplete.toggle()
         }catch{
             print("Ocurrió un error al intentar cerrar sesión")
         }
@@ -77,15 +77,18 @@ class LoginViewModel: ObservableObject {
             let (data, _) = try await URLSession.shared.data(from: url)
             inProgress = true
             if let decodedResponse = try JSONDecoder().decode(UserModel?.self, from: data){
-                user = decodedResponse
-                print(user.nombre)
-                isLoggedIn = user.acceso
-                isPresented = true
-                UserDefaults.standard.set(email, forKey: "emailUser")
-                loggingIn.append(true)
+                if decodedResponse.acceso == true {
+                    user = decodedResponse
+                    print(user.nombre)
+                    isLoggedIn = user.acceso
+                    isPresented = true
+                    UserDefaults.standard.set(email, forKey: "emailUser")
+                    UserDefaults.standard.set(password ,forKey: "passwordUser")
+                    loggingIn.append(true)
+                }
             }
         } catch {
-            inProgress.toggle()
+            inProgress = false
             loginErrors = "Usuario o contraseña incorrectos"
             print("Invalid data")
         }
