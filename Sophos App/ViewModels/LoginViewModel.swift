@@ -19,6 +19,7 @@ class LoginViewModel: ObservableObject {
     @Published var user = UserModel()
     @Published var isPresented: Bool = false
     @Published var complete: Bool = false
+    @Published var languageSelector : Bool = false
     
     func validView(email: String, password: String) -> String? {
       
