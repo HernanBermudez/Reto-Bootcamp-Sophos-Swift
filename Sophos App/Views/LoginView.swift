@@ -14,6 +14,7 @@ struct LoginView: View {
     @ObservedObject var officesVM = OfficesViewModel()
     @ObservedObject var seeDocumentsVM = SeeDocumentsViewModel()
     @EnvironmentObject var authentication: Authentication
+    @State private var isSecured: Bool = true
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -30,11 +31,27 @@ struct LoginView: View {
                     TextField("Email", text: $loginVM.email)
                 }.background(RoundedRectangleInput()).padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 
-                HStack{
-                    Image(systemName: "key.fill").padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 0))
-                    SecureField("Password", text: $loginVM.password )
-                    Image(systemName: "eye.fill").padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20)).onTapGesture {
-                        
+                ZStack(alignment: .trailing) {
+                    Group {
+                        if isSecured {
+                            HStack{
+                                Image(systemName: "key.fill").padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 0))
+                                SecureField("Password", text: $loginVM.password )
+                            }
+                        } else {
+                            HStack{
+                                Image(systemName: "key.fill").padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 0))
+                                TextField("Password", text: $loginVM.password )
+                            }
+                        }
+                    }.padding(.trailing, 32)
+
+                    Button(action: {
+                        isSecured.toggle()
+                    }) {
+                        Image(systemName: self.isSecured ? "eye.slash" : "eye.fill")
+                            .tint(.black)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
                     }
                 }.background(RoundedRectangleInput()).padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                 
