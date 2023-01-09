@@ -12,13 +12,11 @@ struct AsyncButton<Content: View>: View {
     
     @StateObject var loginVM = LoginViewModel()
     
-    var isComplete: Bool
     let action: ()->()
     let content: Content
     
     init(isComplete: Bool, action: @escaping ()->(), @ViewBuilder label: ()->Content) {
         self.action = action
-        self.isComplete = isComplete
         self.content = label()
     }
     
@@ -28,10 +26,10 @@ struct AsyncButton<Content: View>: View {
             withAnimation(Animation.easeInOut(duration: 0.4)) {}
         }, label: {
             VStack(alignment: .trailing) {
-                if loginVM.inProgress && !isComplete {
+                if loginVM.inProgress && !loginVM.isComplete {
                     ProgressView()
                         .foregroundColor(.white)
-                } else if isComplete {
+                } else if loginVM.isComplete {
                     Image(systemName: "checkmark")
                         .resizable()
                         .frame(width: 15, height: 15, alignment: .center)
@@ -40,8 +38,8 @@ struct AsyncButton<Content: View>: View {
                     content
                 }
             }
-            .frame(maxWidth: isComplete || loginVM.inProgress ? 50 : .infinity, maxHeight: isComplete  || loginVM.inProgress ? 50 : nil, alignment: .center)
-            .padding(.vertical, isComplete  || loginVM.inProgress ? 0 : 15)
+            .frame(maxWidth: loginVM.isComplete || loginVM.inProgress ? 50 : .infinity, maxHeight: loginVM.isComplete  || loginVM.inProgress ? 50 : nil, alignment: .center)
+            .padding(.vertical, loginVM.isComplete  || loginVM.inProgress ? 0 : 15)
             .foregroundColor(.white)
             .background(colorSophos)
             .cornerRadius(25)
