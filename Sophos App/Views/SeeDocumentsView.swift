@@ -34,6 +34,7 @@ struct SeeDocumentsView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -20))
                         .foregroundColor(colorSophos)
                 }.multilineTextAlignment(TextAlignment.center)
+                
             }
         } detail: {
             
