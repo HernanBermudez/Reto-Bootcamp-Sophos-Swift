@@ -14,6 +14,7 @@ struct LoginView: View {
     @ObservedObject var officesVM = OfficesViewModel()
     @ObservedObject var seeDocumentsVM = SeeDocumentsViewModel()
     @EnvironmentObject var authentication: Authentication
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationSplitView{
