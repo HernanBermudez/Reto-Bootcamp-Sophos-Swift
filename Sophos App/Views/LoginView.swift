@@ -62,9 +62,12 @@ struct LoginView: View {
                 AsyncButton(isComplete: loginVM.isLoggedIn, action: {
                     if let errorMessage = loginVM.validView(email: loginVM.email, password: loginVM.password) {
                         loginVM.loginErrors = errorMessage
+                        loginVM.inProgress = false
+                        //isLoggedIn.toggle()
+                        //isPresented.toggle()
                     } else {
                         loginVM.loginErrors = ""
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             withAnimation {loginVM.isLoggedIn = true}
                         }
                         Task{
@@ -75,7 +78,7 @@ struct LoginView: View {
                         }
                     }
                 }) {
-                    NavigationLink(loginVM.isLoggedIn || loginVM.inProgress ? "" : "Ingresar", value: true)
+                    NavigationLink(loginVM.isLoggedIn && loginVM.inProgress ? "" : "Ingresar", value: true)
                 }
                 
                 AsyncButton(isComplete: loginVM.isUnlocked, action: {
